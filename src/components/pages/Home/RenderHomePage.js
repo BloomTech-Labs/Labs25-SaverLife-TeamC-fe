@@ -13,13 +13,25 @@ function RenderHomePage(props) {
           approach components.
         </p>
         <p>
-          <Link to="/profile-list">Profiles Example</Link>
+          <Link to="/signup">Signup component</Link>
         </p>
         <p>
-          <Link to="/example-list">Example List of Items</Link>
+          <Link to="/categories">categories component</Link>
         </p>
         <p>
-          <Link to="/datavis">Data Visualizations Example</Link>
+          <Link to="/logout">logout component</Link>
+        </p>
+        <p>
+          <Link to="/budget">budget component</Link>
+        </p>
+        <p>
+          <Link to="/profile">profile component</Link>
+        </p>
+        <p>
+          <Link to="/progress">progress component</Link>
+        </p>
+        <p>
+          <Link to="/transactions">transactions component</Link>
         </p>
         <p>
           <Button type="primary" onClick={() => authService.logout()}>
