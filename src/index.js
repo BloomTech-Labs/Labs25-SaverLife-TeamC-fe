@@ -15,6 +15,13 @@ import { LoginPage } from './components/pages/Login';
 import { HomePage } from './components/pages/Home';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
+import { CategorizedSpending } from './components/pages/CategorizedSpending';
+import { Logout } from './components/pages/Logout';
+import { PredictiveBudget } from './components/pages/PredictiveBudget';
+import { Profile } from './components/pages/Profile';
+import { Progress } from './components/pages/Progress';
+import { Transactions } from './components/pages/Transactions';
+import { OnboardingFlow } from './components/pages/UserOnboarding';
 
 ReactDOM.render(
   <Router>
@@ -40,12 +47,31 @@ function App() {
     <Security {...config} onAuthRequired={authHandler}>
       <Switch>
         <Route path="/login" component={LoginPage} />
+        <Route path="/signup" component={OnboardingFlow} />
         <Route path="/implicit/callback" component={LoginCallback} />
         {/* any of the routes you need secured should be registered as SecureRoutes */}
         <SecureRoute
           path="/"
           exact
           component={() => <HomePage LoadingComponent={LoadingComponent} />}
+        />
+        <SecureRoute
+          path="/categories"
+          exact
+          component={() => <CategorizedSpending />}
+        />
+        <SecureRoute path="/logout" exact component={() => <Logout />} />
+        <SecureRoute
+          path="/budget"
+          exact
+          component={() => <PredictiveBudget />}
+        />
+        <SecureRoute path="/profile" exact component={() => <Profile />} />
+        <SecureRoute path="/progress" exact component={() => <Progress />} />
+        <SecureRoute
+          path="/transactions"
+          exact
+          component={() => <Transactions />}
         />
         <Route component={NotFoundPage} />
       </Switch>
