@@ -18,9 +18,7 @@ function RenderHomePage(props) {
         <p>
           <Link to="/categories">categories component</Link>
         </p>
-        <p>
-          <Link to="/logout">logout component</Link>
-        </p>
+
         <p>
           <Link to="/budget">budget component</Link>
         </p>

@@ -60,7 +60,7 @@ function App() {
           exact
           component={() => <CategorizedSpending />}
         />
-        <SecureRoute path="/logout" exact component={() => <Logout />} />
+
         <SecureRoute
           path="/budget"
           exact
