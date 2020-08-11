@@ -1,3 +1,5 @@
+import 'antd/dist/antd.less';
+import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
@@ -8,15 +10,12 @@ import {
 } from 'react-router-dom';
 import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
 
-import 'antd/dist/antd.less';
-
 import { NotFoundPage } from './components/pages/NotFound';
 import { LoginPage } from './components/pages/Login';
 import { HomePage } from './components/pages/Home';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
 import { CategorizedSpending } from './components/pages/CategorizedSpending';
-import { Logout } from './components/pages/Logout';
 import { PredictiveBudget } from './components/pages/PredictiveBudget';
 import { Profile } from './components/pages/Profile';
 import { Progress } from './components/pages/Progress';
