@@ -25,7 +25,6 @@ const StyledHeader = styled(Header)`
 function AppHeader() {
   const toggleMenu = e => {
     const menu = document.getElementsByClassName('menu')[0];
-    console.log(menu);
     menu.classList.toggle('toggle-menu');
   };
   return (
