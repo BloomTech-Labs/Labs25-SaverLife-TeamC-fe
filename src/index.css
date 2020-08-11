@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a {
+    color: #c01089;
+    text-decoration: none;
+} 
+
+a:visited {
+    color: #ecb7db;
+}
+
+.danger {
+    background-color: red;
+}

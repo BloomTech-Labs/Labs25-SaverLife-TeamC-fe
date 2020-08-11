@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "@craco/craco": "^5.6.4",
     "@okta/okta-react": "^3.0.2",
     "@okta/okta-signin-widget": "^4.1.2",
@@ -14,7 +15,8 @@
     "react-dom": "^16.13.1",
     "react-plotly.js": "^2.4.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "styled-components": "^5.1.1"
   },
   "scripts": {
     "start": "react-scripts --max_old_space_size=4096 start",
