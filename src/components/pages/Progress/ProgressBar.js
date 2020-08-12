@@ -38,7 +38,7 @@ const Label = styled.span`
 `;
 
 const ProgressBar = props => {
-  const percent = 72.5; // this percentage to goal is hardcoded in for now
+  const percent = ((props.saved / props.goal) * 100).toFixed(2);
   const barColor = '#c01089';
 
   // the colored part of the bar that is displaying the percentage dynamically
@@ -62,6 +62,9 @@ const ProgressBar = props => {
 };
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    saved: state.goalReducer.saved,
+    goal: state.goalReducer.goal,
+  };
 };
 export default connect(mapStateToProps, {})(ProgressBar);
