@@ -21,13 +21,12 @@ overflow-x: hidden;
     background: none;
     background-color: none;
   }
-  @media (min-width: 360px) and (max-width: 500px) {
+@media (min-width: 360px) and (max-width: 500px) {
     height: 100vh;
     background: none;
     background-color: #00a6af;
   }
-
-    @media (min-width: 600px) and (max-width: 800px) {
+@media (min-width: 600px) and (max-width: 800px) {
     height: 100vh;
     background: url(${Bank});
     background-position: 80% 5%;
