@@ -72,21 +72,13 @@ const mapStateToProps = state => {
 function RenderHomePage(props) {
   const { userInfo, authService, state } = props;
   const transactions = state.transactionReducer.data;
-  // // get 5 most recent transactions for the table
+  // get 5 most recent transactions for the table
+  //THIS IS FOR TRANSACTIONS
   const tableHeaders = Object.keys(transactions[0]);
 
-  //hack to get rid of vendor code
+  //hack to get rid of vendor code... will change based on what final data looks like
   tableHeaders.splice(2, 1);
-  const innerData = [];
 
-  // transactions.forEach(item => {
-  //   const newArray = [];
-  //   tableHeaders.forEach(header => {
-  //     newArray.push(item[header])
-  //   });
-  //   innerData.push(newArray)
-  // });
-  //create a new object
   const newObj = {};
 
   tableHeaders.forEach(header => {
@@ -99,20 +91,34 @@ function RenderHomePage(props) {
     });
   });
 
-  //now we have an object of arrays for each of these items
-
-  //lets get it into an array of arrays in the right order so we can feed it to the plot
-
   const arrayOfTransactionArrays = [];
 
   tableHeaders.forEach(header => {
     arrayOfTransactionArrays.push(newObj[header].slice(0, 5));
   });
 
-  //okay now we have an array of empty arrays. let's do this
+  //grab data for a pie chart of categorized spending
+  //THIS IS FOR THE CATEGORIZED DATA
+  //make a dictionary of categories and amount spent
 
-  // console.log({innerData})
-  // console.log({tableHeaders})
+  const categoriesSpending = {};
+  transactions.forEach(trans => {
+    if (!(trans.category in categoriesSpending)) {
+      categoriesSpending[trans.category] = trans.amount;
+    } else {
+      categoriesSpending[trans.category] =
+        categoriesSpending[trans.category] + trans.amount;
+    }
+  });
+
+  const categoryList = Object.keys(categoriesSpending);
+  const categoriesData = [];
+  categoryList.forEach(cat => {
+    categoriesData.push(categoriesSpending[cat]);
+  });
+
+  console.log({ categoriesData });
+  console.log({ categoryList });
 
   return (
     <div>
@@ -167,29 +173,32 @@ function RenderHomePage(props) {
               </div>
               <div className="card-body">
                 <Plot
-                  className="transaction-plot"
+                  className="category-plot"
                   data={[
                     {
-                      type: 'table',
-                      header: {
-                        values: tableHeaders,
-                        align: 'center',
-                        line: { width: 1, color: 'black' },
-                        fill: { color: 'grey' },
-                        font: { family: 'Arial', size: 8, color: 'white' },
-                      },
-                      cells: {
-                        values: arrayOfTransactionArrays,
-                        align: 'center',
-                        line: { color: 'black', width: 1 },
-                        font: { family: 'Arial', size: 8, color: ['black'] },
-                      },
+                      x: categoriesData,
+                      y: categoryList,
+                      text: categoryList,
+                      type: 'bar',
+                      width: 0.3,
+                      orientation: 'h',
+                      // textfont: {
+                      //   size: 400,
+                      // }
                     },
                   ]}
                   layout={{
                     width: 250,
-                    height: 150,
-                    margin: { l: 0, r: 0, t: 0, b: 0 },
+                    height: 200,
+                    margin: { l: 100, r: 0, t: 0, b: 20 },
+                    yaxis: {
+                      type: 'category',
+                      font: {
+                        size: 400,
+                      },
+                    },
+
+                    // showlegend: true
                   }}
                 />
                 <Link to="/categories" className="right-button">
