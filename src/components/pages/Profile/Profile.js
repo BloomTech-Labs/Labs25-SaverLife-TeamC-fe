@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import AppHeader from '../../common/AppHeader';
 import AppMenu from '../../common/AppMenu';
+import './profile.css';
 
 const Profile = () => {
   const [fileInputState, setFileInputState] = useState('');
@@ -47,10 +48,15 @@ const Profile = () => {
         <AppMenu />
       </div>
       {previewSource && (
-        <img src={previewSource} alt="chosen" style={{ height: '300px' }} />
+        <img
+          className="profile-image"
+          src={previewSource}
+          alt="chosen"
+          style={{ height: '17rem', borderRadius: '50%', margin: '2%' }}
+        />
       )}
       <div className="form-container">
-        <form onSubmit={handleSubmitFile} className="form">
+        <form onSubmit={handleSubmitFile} className="profile-form">
           <input
             type="file"
             name="image"
@@ -59,7 +65,7 @@ const Profile = () => {
             className="form-input"
           />
           {/* need to create some styles for the different form classNames in the css later */}
-          <button className="btn" type="submit">
+          <button className="submit-btn" type="submit">
             Submit
           </button>
         </form>

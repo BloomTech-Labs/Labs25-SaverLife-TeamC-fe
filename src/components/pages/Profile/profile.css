@@ -1,0 +1,19 @@
+form {
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .submit-btn {
+    margin-top: 2%;
+  }
+  
+  .submit-btn {
+    color: white;
+    background-color: #00a6af;
+    border: 1px solid white;
+    border-radius: 4px;
+    height: 2rem;
+    width: 7rem;
+    font-size: 1.2rem;
+  }
