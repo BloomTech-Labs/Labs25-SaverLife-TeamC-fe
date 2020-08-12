@@ -22,12 +22,22 @@ import { Progress } from './components/pages/Progress';
 import { Transactions } from './components/pages/Transactions';
 import { OnboardingFlow } from './components/pages/UserOnboarding';
 
+// REDUX set up
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './state/reducers';
+const store = createStore(rootReducer, applyMiddleware(thunk));
+// end of REDUX set up
+
 ReactDOM.render(
-  <Router>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 
