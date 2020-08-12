@@ -1,17 +1,27 @@
 * {
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  max-width: 100%;
 }
 
 a {
-    color: #c01089;
-    text-decoration: none;
-} 
-
-a:visited {
-    color: #ecb7db;
+  color: #c01089;
+  text-decoration: none;
 }
 
-.danger {
-    background-color: red;
+a:visited {
+  color: #ecb7db;
+}
+
+.toggle-menu {
+  display: none;
+}
+
+.header-container {
+  position: fixed;
+  top: 0px;
+}
+
+.content-container {
+  margin-top: 75px;
 }

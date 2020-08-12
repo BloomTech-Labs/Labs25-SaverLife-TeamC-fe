@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header } = Layout;
 
 const StyledHeader = styled(Header)`
   display: flex;
@@ -13,6 +13,7 @@ const StyledHeader = styled(Header)`
   margin: 5% 2%;
   padding-bottom: 3%;
   border-bottom: 1px solid grey;
+  height: 55px;
   img {
     width: 35%;
   }
@@ -22,10 +23,14 @@ const StyledHeader = styled(Header)`
 `;
 
 function AppHeader() {
+  const toggleMenu = e => {
+    const menu = document.getElementsByClassName('menu')[0];
+    menu.classList.toggle('toggle-menu');
+  };
   return (
     <Layout>
       <StyledHeader className="header-container">
-        <MenuOutlined className="hamburger-menu" />
+        <MenuOutlined onClick={toggleMenu} className="hamburger-menu" />
         <img src="saverlife.png" alt="SaverLife Logo" />
       </StyledHeader>
     </Layout>
