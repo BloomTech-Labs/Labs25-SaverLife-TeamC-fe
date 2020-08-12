@@ -7,6 +7,9 @@ import AppMenu from '../../common/AppMenu';
 import styled from 'styled-components';
 import Plot from 'react-plotly.js';
 import { connect } from 'react-redux';
+
+import CategorizedPlot from './Graphs/CategorizedPlot';
+import TransactionPlot from './Graphs/TransactionPlot';
 const StyledDiv = styled.div`
   padding: 5% 2%;
   h1 {
@@ -69,6 +72,7 @@ const mapStateToProps = state => {
   };
 };
 
+//TODO: move these cards into separate components probably
 function RenderHomePage(props) {
   const { userInfo, authService, state } = props;
   const transactions = state.transactionReducer.data;
@@ -134,31 +138,9 @@ function RenderHomePage(props) {
                 <p>Recent Transactions</p>
               </div>
               <div className="card-body">
-                <Plot
-                  className="transaction-plot"
-                  data={[
-                    {
-                      type: 'table',
-                      header: {
-                        values: tableHeaders,
-                        align: 'center',
-                        line: { width: 1, color: 'black' },
-                        fill: { color: 'grey' },
-                        font: { family: 'Arial', size: 8, color: 'white' },
-                      },
-                      cells: {
-                        values: arrayOfTransactionArrays,
-                        align: 'center',
-                        line: { color: 'black', width: 1 },
-                        font: { family: 'Arial', size: 8, color: ['black'] },
-                      },
-                    },
-                  ]}
-                  layout={{
-                    width: 250,
-                    height: 150,
-                    margin: { l: 0, r: 0, t: 0, b: 0 },
-                  }}
+                <TransactionPlot
+                  headers={tableHeaders}
+                  transactionArrays={arrayOfTransactionArrays}
                 />
                 <Link to="/transactions" className="right-button">
                   See All Transactions
@@ -172,34 +154,9 @@ function RenderHomePage(props) {
                 <p>Spending By Category</p>
               </div>
               <div className="card-body">
-                <Plot
-                  className="category-plot"
-                  data={[
-                    {
-                      x: categoriesData,
-                      y: categoryList,
-                      text: categoryList,
-                      type: 'bar',
-                      width: 0.3,
-                      orientation: 'h',
-                      // textfont: {
-                      //   size: 400,
-                      // }
-                    },
-                  ]}
-                  layout={{
-                    width: 250,
-                    height: 200,
-                    margin: { l: 100, r: 0, t: 0, b: 20 },
-                    yaxis: {
-                      type: 'category',
-                      font: {
-                        size: 400,
-                      },
-                    },
-
-                    // showlegend: true
-                  }}
+                <CategorizedPlot
+                  categories={categoryList}
+                  data={categoriesData}
                 />
                 <Link to="/categories" className="right-button">
                   See Spending By Category
