@@ -14,7 +14,52 @@ const StyledDiv = styled.div`
   }
 
   .transaction-plot {
-    width: 50%;
+  }
+  .dash-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .dash-card {
+      margin: 2% 0;
+    }
+  }
+  .dash-card {
+    padding: 0 2%;
+    border-radius: 2%;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+  .card-title {
+    p {
+      border-bottom: 1px solid lightgray;
+      padding: 2% 0;
+      font-size: 1rem;
+    }
+  }
+  .card-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    margin: 0 2%;
+    padding: 2% 0;
+    * {
+      margin: 1% 0;
+    }
+    .right-button {
+      border: 1px solid #ecb7db;
+      border-radius: 2%;
+      padding: 2%;
+      width: 100%;
+
+      &:hover {
+        background: #ecb7db;
+        color: white;
+      }
+    }
   }
 `;
 
@@ -77,15 +122,17 @@ function RenderHomePage(props) {
         <StyledDiv>
           <h1>Welcome back, {userInfo.name}</h1>
           <div className="dash-card-container">
+            {/* transactions card */}
             <div className="dash-card transactions-summary">
               <div className="card-title">
-                <p>Past Transactions</p>
+                <p>Recent Transactions</p>
+              </div>
+              <div className="card-body">
                 <Plot
                   className="transaction-plot"
                   data={[
                     {
                       type: 'table',
-                      columnwidth: 10,
                       header: {
                         values: tableHeaders,
                         align: 'center',
@@ -99,19 +146,56 @@ function RenderHomePage(props) {
                         line: { color: 'black', width: 1 },
                         font: { family: 'Arial', size: 8, color: ['black'] },
                       },
-
-                      // mode: 'lines+markers',
-                      // marker: {color: 'red'},
                     },
                   ]}
                   layout={{
-                    width: '100%',
-                    height: '100%',
-                    title: 'Recent Transactions',
+                    width: 250,
+                    height: 150,
+                    margin: { l: 0, r: 0, t: 0, b: 0 },
                   }}
                 />
+                <Link to="/transactions" className="right-button">
+                  See All Transactions
+                </Link>
               </div>
-              <div className="card-body"></div>
+            </div>
+
+            {/* Categorized Spending  */}
+            <div className="dash-card category-summary">
+              <div className="card-title">
+                <p>Spending By Category</p>
+              </div>
+              <div className="card-body">
+                <Plot
+                  className="transaction-plot"
+                  data={[
+                    {
+                      type: 'table',
+                      header: {
+                        values: tableHeaders,
+                        align: 'center',
+                        line: { width: 1, color: 'black' },
+                        fill: { color: 'grey' },
+                        font: { family: 'Arial', size: 8, color: 'white' },
+                      },
+                      cells: {
+                        values: arrayOfTransactionArrays,
+                        align: 'center',
+                        line: { color: 'black', width: 1 },
+                        font: { family: 'Arial', size: 8, color: ['black'] },
+                      },
+                    },
+                  ]}
+                  layout={{
+                    width: 250,
+                    height: 150,
+                    margin: { l: 0, r: 0, t: 0, b: 0 },
+                  }}
+                />
+                <Link to="/categories" className="right-button">
+                  See Spending By Category
+                </Link>
+              </div>
             </div>
           </div>
           <div>
