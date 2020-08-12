@@ -3,7 +3,11 @@
 
 import { combineReducers } from 'redux';
 import { userReducer } from './userReducer';
+import { goalReducer } from './goalReducer';
+import { transactionReducer } from './transactionReducer';
 
 export default combineReducers({
   userReducer,
+  goalReducer,
+  transactionReducer,
 });
