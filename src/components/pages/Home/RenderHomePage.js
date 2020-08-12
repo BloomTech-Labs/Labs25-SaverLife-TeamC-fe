@@ -163,6 +163,7 @@ function RenderHomePage(props) {
                 </Link>
               </div>
             </div>
+            {/* Predicted Budget */}
           </div>
           <div>
             <Button type="primary" onClick={() => authService.logout()}>
