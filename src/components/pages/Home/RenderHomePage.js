@@ -10,7 +10,7 @@ function RenderHomePage(props) {
   return (
     <div>
       <AppHeader />
-      <div className="content-conatiner">
+      <div className="content-container">
         <AppMenu />
         <h1>Hi {userInfo.name} Welcome to Labs Basic SPA</h1>
         <div>
