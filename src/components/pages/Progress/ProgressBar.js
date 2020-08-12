@@ -12,16 +12,16 @@ const BarDiv = styled.div`
   width: 100%;
   height: 30px;
 
-  margin: 20% 0 5%;
+  margin: 5% 0 5%;
 `;
 
-// the actual pogress bar
+// the full progress bar
 const FullBar = styled.div`
   width: 80%;
   height: 100%;
 
   background-color: grey;
-  border-radius: 25px;
+  border-radius: 15px;
   margin: 50;
 `;
 
@@ -34,13 +34,17 @@ const Label = styled.span`
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  margin-right: 5%;
+  margin-right: 1%;
 `;
 
 const ProgressBar = props => {
-  const percent = ((props.saved / props.goal) * 100).toFixed(2);
-  const barColor = '#c01089';
+  let barColor = '#c01089';
+  let percent = (props.saved / props.goal) * 100;
+  percent = Math.round(percent * 100) / 100; // rounding to 2 decimal places
 
+  if (percent < 6) {
+    barColor = 'None';
+  }
   // the colored part of the bar that is displaying the percentage dynamically
   const CompletedBar = {
     height: '100%',
