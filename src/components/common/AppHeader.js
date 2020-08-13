@@ -18,7 +18,7 @@ const StyledHeader = styled(Header)`
     width: 35%;
   }
   .hamburger-menu {
-    font-size: 2rem;
+    font-size: 4rem;
   }
 `;
 
