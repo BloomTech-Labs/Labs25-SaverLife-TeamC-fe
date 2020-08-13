@@ -40,7 +40,7 @@ const ProgressBar = props => {
   let percent = (props.saved / props.goal) * 100;
   percent = Math.round(percent * 100) / 100; // rounding to 2 decimal places
 
-  if (percent < 6) {
+  if (percent < 4) {
     barColor = 'None';
   }
   // the colored part of the bar that is displaying the percentage dynamically
