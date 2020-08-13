@@ -5,7 +5,7 @@ import { LoadingComponent } from '../components/common';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 afterEach(cleanup);
-
+window.URL.createObjectURL = function() {};
 jest.mock('@okta/okta-react', () => ({
   useOktaAuth: () => {
     return {
