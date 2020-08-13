@@ -28,10 +28,10 @@ const Profile = () => {
     uploadImage(previewSource);
   };
 
-  // TODO: connect with backend server to make a post request
+  // TODO: connect with backend server to make a post request - 404 error at the moment
   const uploadImage = async base64EncodedImage => {
     try {
-      await fetch('/profile', {
+      await fetch('api/upload', {
         method: 'POST',
         body: JSON.stringify({ data: base64EncodedImage }),
         headers: { 'Content-type': 'application/json' },
@@ -64,7 +64,6 @@ const Profile = () => {
             value={fileInputState}
             className="form-input"
           />
-          {/* need to create some styles for the different form classNames in the css later */}
           <button className="submit-btn" type="submit">
             Submit
           </button>
