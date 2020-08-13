@@ -40,7 +40,7 @@ const Title = styled.h1`
 
 const TextBody = styled.div`
   height: 55%;
-  font-size: 3.5rem;
+  font-size: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
