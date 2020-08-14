@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Plot from 'react-plotly.js';
 
 function CategorizedPlot(props) {
@@ -7,23 +6,18 @@ function CategorizedPlot(props) {
   return (
     <>
       <Plot
-        className="category-plot"
         data={[
           {
             x: data,
             y: categories,
-            text: categories,
             type: 'bar',
-            width: 0.3,
+            width: 0.6,
             orientation: 'h',
-            // textfont: {
-            //   size: 400,
-            // }
           },
         ]}
         layout={{
-          width: 250,
-          height: 200,
+          width: 300,
+          height: 400,
           margin: { l: 100, r: 0, t: 0, b: 20 },
           yaxis: {
             type: 'category',
