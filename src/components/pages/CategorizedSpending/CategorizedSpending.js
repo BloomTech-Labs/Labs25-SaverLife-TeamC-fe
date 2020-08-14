@@ -1,6 +1,6 @@
 //Shows spending by category, lets the user look historically TODO: discuss if this should be represented against a budget
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import CategorizedPlot from './CategorizedPlot';
@@ -33,36 +33,93 @@ const CategorizedSpending = props => {
   const transactions = state.transactionReducer.data;
 
   //This will not be functional until i have the actual date time formats from DS
-  const [chosenMonth, setChosenMonth] = useState('');
+  const [chosenMonth, setChosenMonth] = useState(null);
+  const [plotlyData, setPlotlyData] = useState({
+    data: [],
+    categories: [],
+  });
 
-  //Make the data work for us
-  const categoriesSpending = {};
-  const dateOptions = {};
+  //find the latest Month in the data to set chosen month
+  let latestYear = 0;
+  let latestMonth = 0;
+  let dateOptions = {};
   transactions.forEach(trans => {
-    //accumulate transactions
-    if (!(trans.category in categoriesSpending)) {
-      categoriesSpending[trans.category] = trans.amount;
-    } else {
-      categoriesSpending[trans.category] =
-        categoriesSpending[trans.category] + trans.amount;
+    //break up year and month so we can compare
+    const year = parseInt(trans.date.split('-')[0]);
+    const month = parseInt(trans.date.split('-')[1]);
+
+    //compare and remember most recent date
+    if (year > latestYear) {
+      if (month > latestMonth) {
+        latestYear = year;
+        latestMonth = month;
+      }
     }
 
-    //also get a list of possible months while we're at it
-
-    const monthYear = trans.date.split('-')[0] + '-' + trans.date.split('-')[1];
+    //Turn it into a string for storage
+    let monthYear = year + '-' + month;
+    //see if it's in our dates
     if (!(monthYear in dateOptions)) {
       dateOptions[monthYear] = true;
     }
-    console.log(dateOptions);
   });
 
-  const categoryList = Object.keys(categoriesSpending);
-  const categoriesData = [];
-  categoryList.forEach(cat => {
-    categoriesData.push(categoriesSpending[cat]);
-  });
+  //let's also create an array of months for our drop-down
 
-  console.log(transactions);
+  const allMonths = Object.keys(dateOptions);
+
+  //This is where we'll store the data for the graph
+  let categoriesSpending = {};
+  let categoryList = [];
+  let categoriesData = [];
+
+  useEffect(() => {
+    if (chosenMonth == null) {
+      //okay if this is the first time, we have the last month/year, let's set it. Now we can do everything else in the useeffect hook.
+      setChosenMonth(latestYear + '-' + latestMonth);
+    } else {
+      //Every time that chosenMonth is updated, this will update the plotly chart
+
+      //Accumulate all spending for the chosen month
+      //clear the dictionary
+      categoriesSpending = {};
+
+      //Accumulate
+      transactions.forEach(trans => {
+        const filterDate =
+          trans.date.split('-')[0] + '-' + trans.date.split('-')[1];
+        //we need to filter for the chosen month!
+        if (chosenMonth == filterDate) {
+          if (!(trans.category in categoriesSpending)) {
+            categoriesSpending[trans.category] = trans.amount;
+          } else {
+            categoriesSpending[trans.category] =
+              categoriesSpending[trans.category] + trans.amount;
+          }
+        }
+      });
+
+      //Get a list of categories for use in plotly
+      let categoryList = Object.keys(categoriesSpending);
+
+      //Get a list of amounts for use in plotly
+      categoriesData = [];
+      categoryList.forEach(cat => {
+        categoriesData.push(categoriesSpending[cat]);
+      });
+
+      //update state
+      setPlotlyData({
+        data: categoriesData,
+        categories: categoryList,
+      });
+
+      // console.log({chosenMonth})
+      // console.log({transactions})
+      // console.log({categoriesData})
+      // console.log({categoryList})
+    }
+  }, [chosenMonth]);
 
   return (
     <>
@@ -72,16 +129,13 @@ const CategorizedSpending = props => {
           <AppMenu />
           <StyledDiv>
             <h1>Spending By Category</h1>
+            <h1>The chosen month is {chosenMonth}</h1>
             <CategorizedPlot
               className="cat-plot"
-              data={categoriesData}
-              categories={categoryList}
+              data={plotlyData.data}
+              categories={plotlyData.categories}
             />
-            <DateForm
-              allMonths={[]}
-              chosenMonth={chosenMonth}
-              setChosenMonth={setChosenMonth}
-            />
+            <DateForm allMonths={allMonths} setChosenMonth={setChosenMonth} />
           </StyledDiv>
         </div>
       </div>
