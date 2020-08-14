@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CategorizedPlot from './CategorizedPlot';
 import AppHeader from '../../common/AppHeader';
@@ -21,6 +22,17 @@ const StyledDiv = styled.div`
   .cat-plot {
     margin: 2% 0;
   }
+
+  .button-to-home {
+    border: 1px solid #ecb7db;
+    border-radius: 2%;
+    padding: 2%;
+    width: 60%;
+
+    &:hover {
+      background: #ecb7db;
+      color: white;
+    }
 `;
 
 const mapStateToProps = state => {
@@ -113,11 +125,6 @@ const CategorizedSpending = props => {
         data: categoriesData,
         categories: categoryList,
       });
-
-      // console.log({chosenMonth})
-      // console.log({transactions})
-      // console.log({categoriesData})
-      // console.log({categoryList})
     }
   }, [chosenMonth]);
 
@@ -129,13 +136,16 @@ const CategorizedSpending = props => {
           <AppMenu />
           <StyledDiv>
             <h1>Spending By Category</h1>
-            <h1>The chosen month is {chosenMonth}</h1>
+            <h1>Your Spending For {chosenMonth}</h1>
             <CategorizedPlot
               className="cat-plot"
               data={plotlyData.data}
               categories={plotlyData.categories}
             />
             <DateForm allMonths={allMonths} setChosenMonth={setChosenMonth} />
+            <Link to="/" className="button-to-home">
+              Return Home
+            </Link>
           </StyledDiv>
         </div>
       </div>
