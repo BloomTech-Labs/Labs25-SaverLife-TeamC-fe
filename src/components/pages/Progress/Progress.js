@@ -18,7 +18,8 @@ const Body = styled.div`
   background-color: #00a6af;
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
 `;
 
@@ -33,19 +34,52 @@ const Oval = styled.div`
   align-items: center;
 `;
 
-const Title = styled.h1`
-  font-size: 5rem;
-  margin-top: 20%;
+const TitleAndBarBox = styled.div`
+  width: 90%;
+  background-color: white;
+  padding-bottom: 10%;
+  border-radius: 0.2rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 2px 3px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
-const TextBody = styled.div`
-  height: 55%;
-  font-size: 3rem;
+const Title = styled.h1`
+  font-size: 5rem;
+`;
+
+const TextBodyBox = styled.div`
+  width: 90%;
+  height: 60%;
+  background-color: white;
+  border-radius: 0.2rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 2px 3px rgba(0, 0, 0, 0.2);
+
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
 `;
+
+const TextBar = styled.div`
+  font-size: 2.5rem;
+  width: 85%;
+  height: 12%;
+  padding: 0 5%;
+  border: 0.01rem solid black;
+  border-radius: 0.2rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 2px 3px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  justify-content: space-between;
+  align-item: center;
+`;
+
+const TextDesc = styled.h3``;
+
+const TextVal = styled.h3``;
 
 const Progress = props => {
   let amountToGoal = props.goal - props.saved;
@@ -57,17 +91,31 @@ const Progress = props => {
       <div className="content-container">
         <AppMenu />
         <Body>
-          <Oval>
+          <TitleAndBarBox>
             <Title>Your Progress</Title>
             <ProgressBar />
-            <TextBody>
-              <h3>Amount saved: ${props.saved}</h3>
-              <h3>Amount left: ${amountToGoal}</h3>
-              <h3>Day(s) Remaining: {props.time}</h3>
-              <h3>Goal: ${props.goal}</h3>
-              <h3>Daily Saving Recommendation: ${dailySaving}</h3>
-            </TextBody>
-          </Oval>
+          </TitleAndBarBox>
+          <TextBodyBox>
+            <TextBar>
+              <TextDesc>Amount saved:</TextDesc>{' '}
+              <TextVal>${props.saved}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>Amount left:</TextDesc>{' '}
+              <TextVal>${amountToGoal}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>Day(s) Remaining:</TextDesc>{' '}
+              <TextVal>{props.time}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>Goal:</TextDesc> <TextVal>${props.goal}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>Daily Saving Recommendation:</TextDesc>{' '}
+              <TextVal>${dailySaving}</TextVal>
+            </TextBar>
+          </TextBodyBox>
         </Body>
       </div>
     </div>

@@ -19,7 +19,8 @@ const FullBar = styled.div`
   height: 100%;
 
   background-color: grey;
-  border-radius: 9px;
+  border-radius: 0.2rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 2px 3px rgba(0, 0, 0, 0.2);
 `;
 
 // the number displayed on the bar
