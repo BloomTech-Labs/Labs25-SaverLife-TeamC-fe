@@ -1,44 +1,68 @@
 //show user profile information
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import AppHeader from '../../common/AppHeader';
 import AppMenu from '../../common/AppMenu';
-import './profile.css';
+import styled from 'styled-components';
 
-const Profile = () => {
-  const [fileInputState, setFileInputState] = useState('');
-  const [selectedFile, setSelectedFile] = useState('');
-  const [previewSource, setPreviewSource] = useState('');
+const Body = styled.div`
+  width: 100%;
+  height: 800px;
+  background-color: #ecb7db;
+`;
 
-  const handleFileInputChange = e => {
-    const file = e.target.files[0];
-    previewFile(file);
-  };
+const PreviewSection = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10%;
+`;
 
-  const previewFile = file => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file); // this will convert the image to a URL
-    reader.onloadend = () => {
-      setPreviewSource(reader.result);
-    };
-  };
+const PreviewBox = styled.div`
+  /* would like to add icons in each box */
+  font-size: 2rem;
+  width: 12rem;
+  height: 12rem;
+  padding: 0 5%;
+  margin: 3%;
+  border: 0.02rem solid grey;
+  text-align: center;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 2px 3px rgba(0, 0, 0, 0.2);
 
-  const handleSubmitFile = e => {
-    e.preventDefault();
-    if (!previewSource) return;
-    uploadImage(previewSource);
-  };
+  display: flex;
+`;
 
-  // TODO: connect with backend server to make a post request - 404 error at the moment
-  const uploadImage = async base64EncodedImage => {
-    try {
-      await fetch('api/upload', {
+const Footer = styled.div`
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2%;
+`;
+
+const Profile = props => {
+  const [image, setImage] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const uploadImage = async e => {
+    const files = e.target.files;
+
+    const data = new FormData();
+    data.append('file', files[0]);
+    data.append('upload_preset', 'SaverLife_Upload');
+    setLoading(true);
+    const res = await fetch(
+      'https://api.cloudinary.com/v1_1/dr1b2yto5/image/upload',
+      {
         method: 'POST',
-        body: JSON.stringify({ data: base64EncodedImage }),
-        headers: { 'Content-type': 'application/json' },
-      });
-    } catch (error) {
-      console.error(error);
-    }
+        body: data,
+      }
+    );
+    const file = await res.json();
+
+    setImage(file.secure_url);
+    setLoading(false);
   };
 
   return (
@@ -46,31 +70,63 @@ const Profile = () => {
       <AppHeader />
       <div className="content-container">
         <AppMenu />
-      </div>
-      {previewSource && (
-        <img
-          className="profile-image"
-          src={previewSource}
-          alt="chosen"
-          style={{ height: '17rem', borderRadius: '50%', margin: '2%' }}
-        />
-      )}
-      <div className="form-container">
-        <form onSubmit={handleSubmitFile} className="profile-form">
+        <div>
+          {' '}
+          {/* might switch this div to the Body styled component in the future */}
           <input
             type="file"
-            name="image"
-            onChange={handleFileInputChange}
-            value={fileInputState}
-            className="form-input"
+            name="file"
+            placeholder="Upload an Image"
+            onChange={uploadImage}
           />
-          <button className="submit-btn" type="submit">
-            Submit
-          </button>
-        </form>
+          {loading ? (
+            <h3>Loading...</h3>
+          ) : (
+            <img
+              src={image}
+              style={{ height: '17rem', borderRadius: '50%', margin: '2%' }}
+            />
+          )}
+          <hr className="solid"></hr>
+          <PreviewSection>
+            {/* I will be adding more accuracte previews */}
+            <PreviewBox>
+              <p>Budget</p>
+            </PreviewBox>
+            <PreviewBox>
+              <p>Recent Transactions</p>
+            </PreviewBox>
+          </PreviewSection>
+          <PreviewSection>
+            <PreviewBox>
+              <p>
+                Your Savings Goal is...
+                <br />${props.goal}
+              </p>
+            </PreviewBox>
+            <PreviewBox>
+              <p>
+                Congrats!
+                <br /> <br />
+                You have saved ${props.saved}
+              </p>
+            </PreviewBox>
+          </PreviewSection>
+        </div>
+        <Footer className="footer">
+          <h6>Want to learn how you can budget better?</h6>
+          <a href="#">Take our Quiz!</a>
+        </Footer>
       </div>
     </div>
   );
 };
 
-export default Profile;
+const mapStateToProps = state => {
+  return {
+    saved: state.goalReducer.saved,
+    goal: state.goalReducer.goal,
+  };
+};
+
+export default connect(mapStateToProps, {})(Profile);
