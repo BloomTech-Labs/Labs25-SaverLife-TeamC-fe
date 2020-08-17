@@ -12,6 +12,7 @@ const StyledMenu = styled(Menu)`
   .link-to {
     font-size: 1.6rem;
   }
+  z-index: 1;
 `;
 
 function AppMenu() {
