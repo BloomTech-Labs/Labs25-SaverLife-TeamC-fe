@@ -20,6 +20,7 @@ const PreviewBox = styled.div`
   width: 12rem;
   height: 12rem;
   padding: 0 5%;
+  margin: 3%;
   border: 0.02rem solid grey;
   border-radius: 0.5rem;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 2px 3px rgba(0, 0, 0, 0.2);
@@ -29,6 +30,12 @@ const PreviewBox = styled.div`
 
 const Footer = styled.div`
   /* going to make a sticky footer here */
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2%;
 `;
 
 const Profile = () => {
