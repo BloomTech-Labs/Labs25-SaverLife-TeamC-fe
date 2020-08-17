@@ -5,7 +5,6 @@ import { Button } from 'antd';
 import AppHeader from '../../common/AppHeader';
 import AppMenu from '../../common/AppMenu';
 import styled from 'styled-components';
-import Plot from 'react-plotly.js';
 import { connect } from 'react-redux';
 
 import CategorizedPlot from './Graphs/CategorizedPlot';
@@ -120,9 +119,6 @@ function RenderHomePage(props) {
   categoryList.forEach(cat => {
     categoriesData.push(categoriesSpending[cat]);
   });
-
-  console.log({ categoriesData });
-  console.log({ categoryList });
 
   return (
     <div>
