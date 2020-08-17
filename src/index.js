@@ -21,7 +21,7 @@ import { Profile } from './components/pages/Profile';
 import { Progress } from './components/pages/Progress';
 import { Transactions } from './components/pages/Transactions';
 import { OnboardingFlow } from './components/pages/UserOnboarding';
-import { LandingPage } from './components/pages/Landing/LandingPage';
+import LandingPage from './components/pages/Landing/LandingPage';
 
 // REDUX set up
 import { Provider } from 'react-redux';
