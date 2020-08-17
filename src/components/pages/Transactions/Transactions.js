@@ -130,8 +130,9 @@ const Transactions = props => {
     <div>
       <AppHeader />
       <div className="content-container">
+        <AppMenu />
         <StyledDiv>
-          <h1>This is the transactions component!</h1>
+          <h1>Your Transactions For The Month Of {chosenMonth} </h1>
           <TransactionPlot
             headers={plotlyData.headers}
             transactionArrays={plotlyData.data}
