@@ -5,40 +5,27 @@ import AppMenu from '../../common/AppMenu';
 import './profile.css';
 
 const Profile = () => {
-  const [fileInputState, setFileInputState] = useState('');
-  const [selectedFile, setSelectedFile] = useState('');
-  const [previewSource, setPreviewSource] = useState('');
+  const [image, setImage] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleFileInputChange = e => {
-    const file = e.target.files[0];
-    previewFile(file);
-  };
+  const uploadImage = async e => {
+    const files = e.target.files;
 
-  const previewFile = file => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file); // this will convert the image to a URL
-    reader.onloadend = () => {
-      setPreviewSource(reader.result);
-    };
-  };
-
-  const handleSubmitFile = e => {
-    e.preventDefault();
-    if (!previewSource) return;
-    uploadImage(previewSource);
-  };
-
-  // TODO: connect with backend server to make a post request - 404 error at the moment
-  const uploadImage = async base64EncodedImage => {
-    try {
-      await fetch('api/upload', {
+    const data = new FormData();
+    data.append('file', files[0]);
+    data.append('upload_preset', 'SaverLife_Upload');
+    setLoading(true);
+    const res = await fetch(
+      'https://api.cloudinary.com/v1_1/dr1b2yto5/image/upload',
+      {
         method: 'POST',
-        body: JSON.stringify({ data: base64EncodedImage }),
-        headers: { 'Content-type': 'application/json' },
-      });
-    } catch (error) {
-      console.error(error);
-    }
+        body: data,
+      }
+    );
+    const file = await res.json();
+
+    setImage(file.secure_url);
+    setLoading(false);
   };
 
   return (
@@ -47,27 +34,21 @@ const Profile = () => {
       <div className="content-container">
         <AppMenu />
       </div>
-      {previewSource && (
-        <img
-          className="profile-image"
-          src={previewSource}
-          alt="chosen"
-          style={{ height: '17rem', borderRadius: '50%', margin: '2%' }}
+      <div>
+        <input
+          type="file"
+          name="file"
+          placeholder="Upload an Image"
+          onChange={uploadImage}
         />
-      )}
-      <div className="form-container">
-        <form onSubmit={handleSubmitFile} className="profile-form">
-          <input
-            type="file"
-            name="image"
-            onChange={handleFileInputChange}
-            value={fileInputState}
-            className="form-input"
+        {loading ? (
+          <h3>Loading...</h3>
+        ) : (
+          <img
+            src={image}
+            style={{ height: '17rem', borderRadius: '50%', margin: '2%' }}
           />
-          <button className="submit-btn" type="submit">
-            Submit
-          </button>
-        </form>
+        )}
       </div>
     </div>
   );
