@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import CategorizedPlot from './CategorizedPlot';
 import AppHeader from '../../common/AppHeader';
 import AppMenu from '../../common/AppMenu';
-import DateForm from './DateForm';
+import DateForm from '../../common/DateForm';
 
 const StyledDiv = styled.div`
   padding: 5% 2%;

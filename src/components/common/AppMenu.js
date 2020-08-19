@@ -8,10 +8,11 @@ const { Item, ItemGroup } = Menu;
 const StyledMenu = styled(Menu)`
   position: fixed;
   top: 75px;
-
+  background: white;
   .link-to {
     font-size: 1.6rem;
   }
+  z-index: 1;
 `;
 
 function AppMenu() {
