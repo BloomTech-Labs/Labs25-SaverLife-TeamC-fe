@@ -1,7 +1,7 @@
 import Styled from 'styled-components';
 import Logo from '../../common/saverlife.png';
 import Save from './save.png';
-import Link from './link.png';
+import Linnk from './link.png';
 import Reward from './money.png';
 import Earn from './reward.png';
 import Poor from './poor.png';
@@ -9,6 +9,7 @@ import Test1 from './testimonial1.png';
 import Test2 from './testimonial2.png';
 import Test3 from './testimonial3.png';
 import { Wiggle } from './keyframes';
+import { Link } from 'react-router-dom';
 
 //divs and wrappers
 
@@ -234,6 +235,16 @@ font-size: 1rem;
 
 //Buttons
 
+export const LoginLink = Styled(Link)`
+display:flex;
+width:40%;
+  @media (min-device-width: 2500px) 
+  and (max-device-width: 3000px) {
+    width: 60%;
+    font-size: 1.2rem;
+  }
+`;
+
 export const LoginButton = Styled.button`
 display:flex;
 background-color: #4066b0;
@@ -244,7 +255,7 @@ justify-content: center;
 font-size: 1.5rem;
 font-weight:600;
 padding: 3%;
-width: 30%;
+width:65%;
   @media (min-width: 600px) {
     border-radius: 60px;
       }
@@ -253,14 +264,15 @@ width: 30%;
       }
   @media (min-device-width: 1600px) 
   and (max-device-width: 2000px) {
-    width:20%;
+    width:50%;
     padding: 1%;
-    font-size: 1.3rem;
+    line-height: 2;
+    font-size: 1.5rem;
   }
     @media (min-device-width: 2500px) 
   and (max-device-width: 3000px) {
-    width: 10%;
-    padding: 0.5%;
+    width: 40%;
+    padding: 1%;
     font-size: 1.2rem;
   }
 `;
@@ -300,7 +312,7 @@ animation: ${Wiggle} 0.9s both;
 `;
 
 export const LinkImg = Styled.img.attrs({
-  src: Link,
+  src: Linnk,
 })`
 display:flex;
 margin-right: 5%;

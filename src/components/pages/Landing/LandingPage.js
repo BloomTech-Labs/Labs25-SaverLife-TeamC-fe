@@ -29,6 +29,7 @@ import {
   TestimonialDiv,
   Captions,
   Footer,
+  LoginLink,
 } from './style';
 
 const LandingPage = () => {
@@ -37,7 +38,9 @@ const LandingPage = () => {
       <MainContainerWrapper>
         {/* Top Header */}
         <WrapperRow>
-          <LoginButton>Log In</LoginButton>
+          <LoginLink to="/login">
+            <LoginButton>Log In</LoginButton>
+          </LoginLink>
           <MainLogo />
         </WrapperRow>
 
