@@ -59,10 +59,10 @@ function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={OnboardingFlow} />
         <Route path="/implicit/callback" component={LoginCallback} />
-        <Route path="/" component={LandingPage} />
+        <Route path="/get-started" component={LandingPage} />
         {/* any of the routes you need secured should be registered as SecureRoutes */}
         <SecureRoute
-          path="/home"
+          path="/"
           exact
           component={() => <HomePage LoadingComponent={LoadingComponent} />}
         />
