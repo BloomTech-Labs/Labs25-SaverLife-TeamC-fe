@@ -21,17 +21,11 @@ const Body = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-`;
 
-const Oval = styled.div`
-  width: 90%;
-  height: 95%;
-  background-color: white;
-  border-radius: 20rem;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @media only screen and (min-width: 600px) {
+    margin: 10% 0;
+    height: 1080px;
+  }
 `;
 
 const TitleAndBarBox = styled.div`
@@ -44,6 +38,12 @@ const TitleAndBarBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media only screen and (min-width: 600px) {
+    width: 70%;
+    height: 20%;
+    padding-bottom: 4.5%;
+  }
 `;
 
 const Title = styled.h1`
@@ -61,6 +61,13 @@ const TextBodyBox = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+
+  @media only screen and (min-width: 600px) {
+    height: 70%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 70%;
+  }
 `;
 
 const TextBar = styled.div`
@@ -74,7 +81,16 @@ const TextBar = styled.div`
 
   display: flex;
   justify-content: space-between;
-  align-item: center;
+  align-items: center;
+
+  @media only screen and (min-width: 600px) {
+    font-size: 3.5rem;
+    width: 40%;
+    height: 20%;
+    margin: 2.5%;
+
+    flex-direction: column;
+  }
 `;
 
 const TextDesc = styled.h3``;
@@ -97,22 +113,22 @@ const Progress = props => {
           </TitleAndBarBox>
           <TextBodyBox>
             <TextBar>
-              <TextDesc>Amount saved:</TextDesc>{' '}
-              <TextVal>${props.saved}</TextVal>
-            </TextBar>
-            <TextBar>
-              <TextDesc>Amount left:</TextDesc>{' '}
-              <TextVal>${amountToGoal}</TextVal>
-            </TextBar>
-            <TextBar>
-              <TextDesc>Day(s) Remaining:</TextDesc>{' '}
-              <TextVal>{props.time}</TextVal>
-            </TextBar>
-            <TextBar>
               <TextDesc>Goal:</TextDesc> <TextVal>${props.goal}</TextVal>
             </TextBar>
             <TextBar>
-              <TextDesc>Daily Saving Recommendation:</TextDesc>{' '}
+              <TextDesc>Day(s) Remaining:</TextDesc>
+              <TextVal>{props.time}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>Amount saved:</TextDesc>
+              <TextVal>${props.saved}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>Amount left:</TextDesc>
+              <TextVal>${amountToGoal}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>Daily Saving Recommendation:</TextDesc>
               <TextVal>${dailySaving}</TextVal>
             </TextBar>
           </TextBodyBox>
