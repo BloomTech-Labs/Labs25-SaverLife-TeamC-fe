@@ -22,17 +22,6 @@ https://main.d241jcpwmggivh.amplifyapp.com/
 - `REACT_APP_OKTA_ISSUER_URI` Okta api authorization server issuer uri (eg. `https://name-438r8hr.okta.com/oauth2/default`)
 - `REACT_APP_API_URI` The URL (localhost or live) for the Backend that you're building
 
-## Components
-
-- Categorized Spending - Trello: https://trello.com/c/iY4Vyibr
-
-- Budget - Trello: https://trello.com/c/tVyeliE1
-
-- Profile Page - Trello: https://trello.com/c/tqLZJ9ny
-
-- Progress Page - Trello: https://trello.com/c/8pBrEwj4
-
-- Transactions - Trello: https://trello.com/c/UHgYHeRl
 
 ## Styling Our App
 

@@ -4,6 +4,14 @@ import { connect } from 'react-redux';
 import AppHeader from '../../common/AppHeader';
 import AppMenu from '../../common/AppMenu';
 import styled from 'styled-components';
+// import { DollarCircleTwoTone } from '@ant-design/icons';
+import {
+  FcMoneyTransfer,
+  FcPositiveDynamic,
+  FcOvertime,
+  FcSalesPerformance,
+} from 'react-icons/fc';
+import './profile.css';
 
 const Body = styled.div`
   width: 100%;
@@ -20,6 +28,7 @@ const PreviewSection = styled.div`
 const PreviewBox = styled.div`
   /* would like to add icons in each box */
   font-size: 2rem;
+  /* font-weight: bold; */
   width: 12rem;
   height: 12rem;
   padding: 0 5%;
@@ -28,6 +37,7 @@ const PreviewBox = styled.div`
   text-align: center;
   border-radius: 0.5rem;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 2px 3px rgba(0, 0, 0, 0.2);
+  color: #c01089;
 
   display: flex;
 `;
@@ -91,20 +101,24 @@ const Profile = props => {
           <PreviewSection>
             {/* I will be adding more accuracte previews */}
             <PreviewBox>
-              <p>Budget</p>
+              <FcMoneyTransfer size={50} />
+              <p>Your Budget</p>
             </PreviewBox>
             <PreviewBox>
+              <FcOvertime />
               <p>Recent Transactions</p>
             </PreviewBox>
           </PreviewSection>
           <PreviewSection>
             <PreviewBox>
+              <FcSalesPerformance />
               <p>
                 Your Savings Goal is...
                 <br />${props.goal}
               </p>
             </PreviewBox>
             <PreviewBox>
+              <FcPositiveDynamic />
               <p>
                 Congrats!
                 <br /> <br />
