@@ -21,6 +21,7 @@ import { Profile } from './components/pages/Profile';
 import { Progress } from './components/pages/Progress';
 import { Transactions } from './components/pages/Transactions';
 import { OnboardingFlow } from './components/pages/UserOnboarding';
+import LandingPage from './components/pages/Landing/LandingPage';
 
 // REDUX set up
 import { Provider } from 'react-redux';
@@ -58,6 +59,7 @@ function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={OnboardingFlow} />
         <Route path="/implicit/callback" component={LoginCallback} />
+        <Route path="/get-started" component={LandingPage} />
         {/* any of the routes you need secured should be registered as SecureRoutes */}
         <SecureRoute
           path="/"
