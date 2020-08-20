@@ -1,6 +1,6 @@
 # SaverLife 
 
-## Description
+## Description 👇
 
 > **Disclaimer:** This application is currently in Alpha (as of Aug 03, 2020) and is not ready for production. Please use at your own risk as things will change almost daily.
 
@@ -10,7 +10,7 @@
 
 - This app will give working people the methods and motivation to take control of their financial future.
 
-## Resources
+## Resources 👇
 
 ## Deployed App
 
@@ -36,8 +36,8 @@ https://main.d241jcpwmggivh.amplifyapp.com/
 
 ## Styling Our App
 
-`Ant Design` - https://ant.design/
-`Styled Components` - https://styled-components.com/
+- `Ant Design` - https://ant.design/
+- `Styled Components` - https://styled-components.com/
 
 
 ## Data Visualization 
