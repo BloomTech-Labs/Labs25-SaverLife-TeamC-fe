@@ -32,10 +32,10 @@ font-size: 1.5rem;
     text-decoration: underline;  
     }
   @media (min-device-width: 1501px) and (max-device-width: 2000px)  {
-      font-size: 2.3rem;
+      font-size: 2rem;
   }
     @media (min-device-width: 2001px) and (max-device-width: 3000px) {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     }
 `;
 
