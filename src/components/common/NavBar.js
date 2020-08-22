@@ -4,8 +4,7 @@ import Styled from 'styled-components';
 
 const Navigation = Styled.div`
 display:none;
-width: 80%;
-border: 1px red solid;
+width: 90%;
 justify-content: space-between;
   @media (min-device-width: 1000px) {
       display: flex;
@@ -31,11 +30,12 @@ font-size: 1.5rem;
     font-weight:800;
     text-decoration: underline;  
     }
+    
   @media (min-device-width: 1501px) and (max-device-width: 2000px)  {
       font-size: 2rem;
   }
     @media (min-device-width: 2001px) and (max-device-width: 3000px) {
-    font-size: 2.3rem;
+    font-size: 2rem;
     }
 `;
 

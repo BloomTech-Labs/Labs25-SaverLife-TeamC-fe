@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Layout } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
@@ -14,7 +15,6 @@ const StyledHeader = styled(Header)`
   padding-bottom: 3%;
   border-bottom: 1px solid grey;
   width: 100%;
-  border: 1px red solid;
   left: 0;
   background: rgba(255, 255, 255, 0.8);
   z-index: 1;
@@ -29,7 +29,7 @@ const StyledHeader = styled(Header)`
   @media (min-device-width: 600px) and (max-device-width: 800px) {
     padding: 3% 5%;
     img {
-      width: 30%;
+      width: 100%;
     }
     .hamburger-menu {
       font-size: 5rem;
@@ -44,22 +44,28 @@ const StyledHeader = styled(Header)`
   @media (min-device-width: 1000px) and (max-device-width: 1500px) {
     padding: 3% 5%;
     img {
-      width: 15%;
+      width: 90%;
     }
   }
 
   @media (min-device-width: 1501px)  {
     padding: 3% 5%;
     img {
-      width: 12%;
+      width: 90%;
     }
   
   @media (min-device-width: 2001px)  {
-    padding: 2% 3%;
+    padding: 1.8% 3%;
     img {
-      width: 12%;
+      width: 80%;
     }
   }
+`;
+
+const StyledLink = styled(Link)`
+  display: flex;
+  justify-content: flex-end;
+  width: 20%;
 `;
 
 function AppHeader() {
@@ -72,7 +78,9 @@ function AppHeader() {
       <StyledHeader className="header-container">
         <MenuOutlined onClick={toggleMenu} className="hamburger-menu" />
         <NavBar />
-        <img src="saverlife.png" alt="SaverLife Logo" />
+        <StyledLink to="/">
+          <img src="saverlife.png" alt="SaverLife Logo" onClick />
+        </StyledLink>
       </StyledHeader>
     </Layout>
   );
