@@ -2,7 +2,6 @@ import React from 'react';
 import { Layout } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
-import Navbar from './NavBar';
 import NavBar from './NavBar';
 
 const { Header } = Layout;
@@ -40,15 +39,25 @@ const StyledHeader = styled(Header)`
     .hamburger-menu {
       display: none;
     }
-    .main-nav {
-      display: flex;
+  }
+
+  @media (min-device-width: 1000px) and (max-device-width: 1500px) {
+    padding: 3% 5%;
+    img {
+      width: 15%;
     }
   }
 
-  @media (min-device-width: 1000px) and (max-device-width: 1200px) {
+  @media (min-device-width: 1501px)  {
     padding: 3% 5%;
     img {
-      width: 30%;
+      width: 12%;
+    }
+  
+  @media (min-device-width: 2001px)  {
+    padding: 2% 3%;
+    img {
+      width: 12%;
     }
   }
 `;

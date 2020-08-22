@@ -12,27 +12,54 @@ justify-content: space-between;
   }
 `;
 
+const NaviLinks = Styled(NavLink)`
+display:flex;
+font-size: 1.5rem;
+
+ :visited {
+  color: #c01089;
+}
+ :hover {
+  color: #ecb7db;
+}
+ :active {
+  color: #c01089;
+  font-weight: 800;
+}
+    .selected {
+    color: #00a6af;
+    font-weight:800;
+    text-decoration: underline;  
+    }
+  @media (min-device-width: 1501px) and (max-device-width: 2000px)  {
+      font-size: 2.3rem;
+  }
+    @media (min-device-width: 2001px) and (max-device-width: 3000px) {
+    font-size: 2.5rem;
+    }
+`;
+
 const NavBar = () => {
   return (
     <Navigation>
-      <NavLink to="/" activeClassName="selected">
+      <NaviLinks to="/" activeClassName="selected">
         Home
-      </NavLink>
-      <NavLink to="/categories" activeClassName="selected">
+      </NaviLinks>
+      <NaviLinks to="/categories" activeClassName="selected">
         Categories
-      </NavLink>
-      <NavLink to="/budget" activeClassName="selected">
+      </NaviLinks>
+      <NaviLinks to="/budget" activeClassName="selected">
         Budget
-      </NavLink>
-      <NavLink to="/profile" activeClassName="selected">
+      </NaviLinks>
+      <NaviLinks to="/profile" activeClassName="selected">
         Profile
-      </NavLink>
-      <NavLink to="/progress" activeClassName="selected">
+      </NaviLinks>
+      <NaviLinks to="/progress" activeClassName="selected">
         Progress
-      </NavLink>
-      <NavLink to="/transactions" activeClassName="selected">
+      </NaviLinks>
+      <NaviLinks to="/transactions" activeClassName="selected">
         Transactions
-      </NavLink>
+      </NaviLinks>
     </Navigation>
   );
 };
