@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import AppHeader from '../../common/AppHeader';
 import AppMenu from '../../common/AppMenu';
 import styled from 'styled-components';
-// import { DollarCircleTwoTone } from '@ant-design/icons';
 import {
   FcMoneyTransfer,
   FcPositiveDynamic,
@@ -26,9 +25,7 @@ const PreviewSection = styled.div`
 `;
 
 const PreviewBox = styled.div`
-  /* would like to add icons in each box */
   font-size: 2rem;
-  /* font-weight: bold; */
   width: 12rem;
   height: 12rem;
   padding: 0 5%;
@@ -82,7 +79,6 @@ const Profile = props => {
         <AppMenu />
         <div>
           {' '}
-          {/* might switch this div to the Body styled component in the future */}
           <input
             type="file"
             name="file"
@@ -98,27 +94,27 @@ const Profile = props => {
             />
           )}
           <hr className="solid"></hr>
+          {/* commented out icons will be used at a later time */}
           <PreviewSection>
-            {/* I will be adding more accuracte previews */}
             <PreviewBox>
-              <FcMoneyTransfer size={50} />
+              {/* <FcMoneyTransfer size={50} /> */}
               <p>Your Budget</p>
             </PreviewBox>
             <PreviewBox>
-              <FcOvertime />
+              {/* <FcOvertime /> */}
               <p>Recent Transactions</p>
             </PreviewBox>
           </PreviewSection>
           <PreviewSection>
             <PreviewBox>
-              <FcSalesPerformance />
+              {/* <FcSalesPerformance /> */}
               <p>
                 Your Savings Goal is...
                 <br />${props.goal}
               </p>
             </PreviewBox>
             <PreviewBox>
-              <FcPositiveDynamic />
+              {/* <FcPositiveDynamic /> */}
               <p>
                 Congrats!
                 <br /> <br />
