@@ -7,8 +7,11 @@ import AppMenu from '../../common/AppMenu';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
+// Graphs
 import CategorizedPlot from './Graphs/CategorizedPlot';
 import TransactionPlot from './Graphs/TransactionPlot';
+import GoalsPlot from './Graphs/GoalsPlot';
+
 const StyledDiv = styled.div`
   padding: 5% 2%;
   h1 {
@@ -73,7 +76,7 @@ const mapStateToProps = state => {
 
 //TODO: move these cards into separate components probably
 function RenderHomePage(props) {
-  const { userInfo, authService, state } = props;
+  const { userInfo, authService, state, saved, goal } = props;
   const transactions = state.transactionReducer.data;
   // get 5 most recent transactions for the table
   //THIS IS FOR TRANSACTIONS
@@ -159,6 +162,20 @@ function RenderHomePage(props) {
                 </Link>
               </div>
             </div>
+
+            {/* Goals Meter */}
+            <div className="dash-card category-summary">
+              <div className="card-title">
+                <p>Goal Meter</p>
+              </div>
+              <div className="card-body">
+                <GoalsPlot saved={saved} goal={goal} />
+                <Link to="/progress" className="right-button">
+                  See All Progress
+                </Link>
+              </div>
+            </div>
+
             {/* Predicted Budget */}
           </div>
           <div>
