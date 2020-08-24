@@ -23,6 +23,11 @@ function AppMenu() {
     <StyledMenu className="menu toggle-menu" onClick={handleClick}>
       <ItemGroup title="SaverLife">
         <Item>
+          <Link className="link-to" to="/">
+            home component
+          </Link>
+        </Item>
+        <Item>
           <Link className="link-to" to="/categories">
             categories component
           </Link>

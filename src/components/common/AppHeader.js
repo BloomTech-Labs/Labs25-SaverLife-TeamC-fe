@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Layout } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
+import NavBar from './NavBar';
 
 const { Header } = Layout;
 
@@ -10,16 +12,60 @@ const StyledHeader = styled(Header)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 5% 2%;
   padding-bottom: 3%;
   border-bottom: 1px solid grey;
-  height: 55px;
+  width: 100%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1;
+  padding: 5%;
   img {
     width: 35%;
   }
   .hamburger-menu {
     font-size: 4rem;
   }
+
+  @media (min-device-width: 600px) and (max-device-width: 800px) {
+    padding: 3% 5%;
+    img {
+      width: 100%;
+    }
+    .hamburger-menu {
+      font-size: 5rem;
+    }
+  }
+  @media (min-device-width: 1000px) {
+    .hamburger-menu {
+      display: none;
+    }
+  }
+
+  @media (min-device-width: 1000px) and (max-device-width: 1500px) {
+    padding: 3% 5%;
+    img {
+      width: 90%;
+    }
+  }
+
+  @media (min-device-width: 1501px)  {
+    padding: 3% 5%;
+    img {
+      width: 90%;
+    }
+  
+  @media (min-device-width: 2001px)  {
+    padding: 1.8% 3%;
+    img {
+      width: 80%;
+    }
+  }
+`;
+
+const StyledLink = styled(Link)`
+  display: flex;
+  justify-content: flex-end;
+  width: 20%;
 `;
 
 function AppHeader() {
@@ -31,7 +77,10 @@ function AppHeader() {
     <Layout>
       <StyledHeader className="header-container">
         <MenuOutlined onClick={toggleMenu} className="hamburger-menu" />
-        <img src="saverlife.png" alt="SaverLife Logo" />
+        <NavBar />
+        <StyledLink to="/">
+          <img src="saverlife.png" alt="SaverLife Logo" onClick />
+        </StyledLink>
       </StyledHeader>
     </Layout>
   );
