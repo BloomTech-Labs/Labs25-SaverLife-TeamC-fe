@@ -10,7 +10,6 @@ import {
   FcOvertime,
   FcSalesPerformance,
 } from 'react-icons/fc';
-import './profile.css';
 
 const Body = styled.div`
   width: 100%;
