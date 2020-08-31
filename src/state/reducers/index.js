@@ -5,9 +5,10 @@ import { combineReducers } from 'redux';
 import { userReducer } from './userReducer';
 import { goalReducer } from './goalReducer';
 import { transactionReducer } from './transactionReducer';
-
+import { budgetReducer } from './budgetReducer';
 export default combineReducers({
   userReducer,
   goalReducer,
   transactionReducer,
+  budgetReducer,
 });

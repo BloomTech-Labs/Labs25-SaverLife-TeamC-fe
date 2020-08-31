@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CategorizedPlot from './CategorizedPlot';
+import BudgetPlot from './BudgetPlot';
 import AppHeader from '../../common/AppHeader';
 import AppMenu from '../../common/AppMenu';
 import DateForm from '../../common/DateForm';
@@ -137,7 +138,12 @@ const CategorizedSpending = props => {
           <StyledDiv>
             <h1>Spending By Category</h1>
             <h1>Your Spending For {chosenMonth}</h1>
-            <CategorizedPlot
+            {/* <CategorizedPlot
+              className="cat-plot"
+              data={plotlyData.data}
+              categories={plotlyData.categories}
+            /> */}
+            <BudgetPlot
               className="cat-plot"
               data={plotlyData.data}
               categories={plotlyData.categories}
