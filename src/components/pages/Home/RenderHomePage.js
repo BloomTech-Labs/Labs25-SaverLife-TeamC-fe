@@ -7,8 +7,11 @@ import AppMenu from '../../common/AppMenu';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
+// Graphs
 import CategorizedPlot from './Graphs/CategorizedPlot';
 import TransactionPlot from './Graphs/TransactionPlot';
+import GoalsPlot from './Graphs/GoalsPlot';
+
 const StyledDiv = styled.div`
   padding: 5% 2%;
   h1 {
@@ -159,6 +162,20 @@ function RenderHomePage(props) {
                 </Link>
               </div>
             </div>
+
+            {/* Goals Meter */}
+            <div className="dash-card goal-summary">
+              <div className="card-title">
+                <p>Progress Meter</p>
+              </div>
+              <div className="card-body">
+                <GoalsPlot />
+                <Link to="/progress" className="right-button">
+                  See All Progress
+                </Link>
+              </div>
+            </div>
+
             {/* Predicted Budget */}
           </div>
           <div>
