@@ -4,6 +4,12 @@ import { connect } from 'react-redux';
 import AppHeader from '../../common/AppHeader';
 import AppMenu from '../../common/AppMenu';
 import styled from 'styled-components';
+import {
+  FcMoneyTransfer,
+  FcPositiveDynamic,
+  FcOvertime,
+  FcSalesPerformance,
+} from 'react-icons/fc';
 
 const Body = styled.div`
   width: 100%;
@@ -18,7 +24,6 @@ const PreviewSection = styled.div`
 `;
 
 const PreviewBox = styled.div`
-  /* would like to add icons in each box */
   font-size: 2rem;
   width: 12rem;
   height: 12rem;
@@ -28,6 +33,7 @@ const PreviewBox = styled.div`
   text-align: center;
   border-radius: 0.5rem;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 2px 3px rgba(0, 0, 0, 0.2);
+  color: #c01089;
 
   display: flex;
 `;
@@ -72,7 +78,6 @@ const Profile = props => {
         <AppMenu />
         <div>
           {' '}
-          {/* might switch this div to the Body styled component in the future */}
           <input
             type="file"
             name="file"
@@ -88,23 +93,27 @@ const Profile = props => {
             />
           )}
           <hr className="solid"></hr>
+          {/* commented out icons will be used at a later time */}
           <PreviewSection>
-            {/* I will be adding more accuracte previews */}
             <PreviewBox>
-              <p>Budget</p>
+              {/* <FcMoneyTransfer size={50} /> */}
+              <p>Your Budget</p>
             </PreviewBox>
             <PreviewBox>
+              {/* <FcOvertime /> */}
               <p>Recent Transactions</p>
             </PreviewBox>
           </PreviewSection>
           <PreviewSection>
             <PreviewBox>
+              {/* <FcSalesPerformance /> */}
               <p>
                 Your Savings Goal is...
                 <br />${props.goal}
               </p>
             </PreviewBox>
             <PreviewBox>
+              {/* <FcPositiveDynamic /> */}
               <p>
                 Congrats!
                 <br /> <br />
