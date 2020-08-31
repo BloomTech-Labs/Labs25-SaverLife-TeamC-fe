@@ -164,9 +164,9 @@ function RenderHomePage(props) {
             </div>
 
             {/* Goals Meter */}
-            <div className="dash-card category-summary">
+            <div className="dash-card goal-summary">
               <div className="card-title">
-                <p>Goal Meter</p>
+                <p>Progress Meter</p>
               </div>
               <div className="card-body">
                 <GoalsPlot saved={saved} goal={goal} />
