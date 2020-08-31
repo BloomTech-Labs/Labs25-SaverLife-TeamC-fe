@@ -76,7 +76,7 @@ const mapStateToProps = state => {
 
 //TODO: move these cards into separate components probably
 function RenderHomePage(props) {
-  const { userInfo, authService, state, saved, goal } = props;
+  const { userInfo, authService, state } = props;
   const transactions = state.transactionReducer.data;
   // get 5 most recent transactions for the table
   //THIS IS FOR TRANSACTIONS
@@ -169,7 +169,7 @@ function RenderHomePage(props) {
                 <p>Progress Meter</p>
               </div>
               <div className="card-body">
-                <GoalsPlot saved={saved} goal={goal} />
+                <GoalsPlot />
                 <Link to="/progress" className="right-button">
                   See All Progress
                 </Link>

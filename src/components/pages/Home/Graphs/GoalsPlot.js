@@ -1,10 +1,9 @@
 import React from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 import Plot from 'react-plotly.js';
 
 function GoalsPlot(props) {
-  const { saved, goal } = props;
   return (
     <div className="goal-graph">
       <Plot
@@ -12,12 +11,15 @@ function GoalsPlot(props) {
         data={[
           {
             domain: { x: [0, 1], y: [0, 1] },
-            value: saved,
+            value: props.saved,
             title: { text: 'Progress Meter' },
             type: 'indicator',
             mode: 'gauge+number',
-            delta: { reference: goal },
-            gauge: { axis: { range: [null, 400] } },
+            delta: { reference: props.goal },
+            gauge: {
+              axis: { range: [null, props.goal] },
+              bar: { color: '#c01089' },
+            },
           },
         ]}
         layout={{
@@ -29,4 +31,12 @@ function GoalsPlot(props) {
     </div>
   );
 }
-export default GoalsPlot;
+
+const mapStateToProps = state => {
+  return {
+    saved: state.goalReducer.saved,
+    goal: state.goalReducer.goal,
+  };
+};
+
+export default connect(mapStateToProps, {})(GoalsPlot);
