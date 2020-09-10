@@ -12,13 +12,12 @@ const StyledHeader = styled(Header)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 3%;
+  padding: 3%;
   border-bottom: 1px solid grey;
   width: 100%;
   left: 0;
   background: rgba(255, 255, 255, 0.8);
   z-index: 1;
-  padding: 5%;
   img {
     width: 35%;
   }
@@ -27,7 +26,6 @@ const StyledHeader = styled(Header)`
   }
 
   @media (min-device-width: 600px) and (max-device-width: 800px) {
-    padding: 3% 5%;
     img {
       width: 100%;
     }
@@ -41,21 +39,13 @@ const StyledHeader = styled(Header)`
     }
   }
 
-  @media (min-device-width: 1000px) and (max-device-width: 1500px) {
-    padding: 3% 5%;
+  @media (min-device-width: 1000px) and (max-device-width: 4000px) {
+    padding: 1% 4%;
     img {
       width: 90%;
-    }
-  }
 
-  @media (min-device-width: 1501px)  {
-    padding: 3% 5%;
-    img {
-      width: 90%;
-    }
-  
-  @media (min-device-width: 2001px)  {
-    padding: 1.8% 3%;
+  @media (max-device-width: 4000px)  {
+    padding: 1% 4%;
     img {
       width: 80%;
     }
@@ -66,6 +56,7 @@ const StyledLink = styled(Link)`
   display: flex;
   justify-content: flex-end;
   width: 20%;
+  padding-left: 5%;
 `;
 
 function AppHeader() {
