@@ -68,7 +68,6 @@ const StyledLink = styled(Link)`
   display: flex;
   justify-content: flex-end;
   width: 20%;
-  border: 1px solid red;
   @media (min-device-width: 250px) and (max-device-width: 499px) {
     padding: 3% 5%;
     width: 50%;
