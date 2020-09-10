@@ -6,6 +6,7 @@ import AppHeader from '../../common/AppHeader';
 import AppMenu from '../../common/AppMenu';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import Gravatar from 'react-gravatar';
 
 // Graphs
 import CategorizedPlot from './Graphs/CategorizedPlot';
@@ -130,6 +131,8 @@ function RenderHomePage(props) {
         <AppMenu />
         <StyledDiv>
           <h1>Welcome back, {userInfo.name}</h1>
+          <Gravatar email={userInfo.email} />
+          <Gravatar email="imriven@yahoo.com" />
           <div className="dash-card-container">
             {/* transactions card */}
             <div className="dash-card transactions-summary">
