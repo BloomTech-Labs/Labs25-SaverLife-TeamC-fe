@@ -24,7 +24,10 @@ const StyledHeader = styled(Header)`
   .hamburger-menu {
     font-size: 4rem;
   }
-
+  @media (min-device-width: 300px) and (max-device-width: 599px) {
+    padding: 3% 5%;
+    }
+  }
   @media (min-device-width: 600px) and (max-device-width: 800px) {
     img {
       width: 100%;
@@ -39,8 +42,10 @@ const StyledHeader = styled(Header)`
     }
   }
 
+
   @media (min-device-width: 1000px) and (max-device-width: 4000px) {
     padding: 1% 4%;
+
     img {
       width: 90%;
 
@@ -56,7 +61,27 @@ const StyledLink = styled(Link)`
   display: flex;
   justify-content: flex-end;
   width: 20%;
+
   padding-left: 5%;
+
+  @media (min-device-width: 250px) and (max-device-width: 499px) {
+    padding: 3% 5%;
+    width: 50%;
+    img {
+      width: 100%;
+    }
+  }
+  @media (min-device-width: 500px) and (max-device-width: 599px) {
+    padding: 3% 5%;
+    width: 42%;
+    img {
+      width: 100%;
+    }
+  }
+  @media (min-device-width: 600px) and (max-device-width: 800px) {
+    width: 30%;
+  }
+
 `;
 
 function AppHeader() {
