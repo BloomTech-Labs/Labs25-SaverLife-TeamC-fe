@@ -38,3 +38,13 @@ export const Bounce = keyframes`
     opacity: 1;
   }
 }`;
+
+export const Fade = keyframes`
+{
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}`;
