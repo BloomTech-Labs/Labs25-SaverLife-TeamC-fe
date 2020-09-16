@@ -1,5 +1,4 @@
 //This will show the user's progress... visualization ideation pending TODO
-
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -10,6 +9,7 @@ import AppMenu from '../../common/AppMenu';
 
 import styled from 'styled-components';
 import ProgressBar from './ProgressBar';
+import SavingsModal from './SavingsModal';
 
 const Body = styled.div`
   width: 100%;
@@ -131,6 +131,16 @@ const Progress = props => {
               <TextDesc>Daily Saving Recommendation:</TextDesc>
               <TextVal>${dailySaving}</TextVal>
             </TextBar>
+            <TextBar>
+              <TextDesc>
+                Save Towards
+                <br />
+                Your Goal:
+              </TextDesc>
+              <TextVal>
+                <SavingsModal />
+              </TextVal>
+            </TextBar>
           </TextBodyBox>
         </Body>
       </div>
@@ -138,7 +148,6 @@ const Progress = props => {
   );
 };
 
-//export default Progress;
 const mapStateToProps = state => {
   return {
     saved: state.goalReducer.saved,
