@@ -51,9 +51,6 @@ const NavBar = () => {
       <NaviLinks to="/budget" activeClassName="selected">
         Budget
       </NaviLinks>
-      <NaviLinks to="/profile" activeClassName="selected">
-        Profile
-      </NaviLinks>
       <NaviLinks to="/progress" activeClassName="selected">
         Progress
       </NaviLinks>
