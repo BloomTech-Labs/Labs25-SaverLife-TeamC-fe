@@ -10,6 +10,7 @@ import TransactionPlot from './TransactionPlot';
 import AppHeader from '../../common/AppHeader';
 import AppMenu from '../../common/AppMenu';
 import DateForm from '../../common/DateForm';
+import Loading from '../../common/LoadingComponent';
 
 const StyledDiv = styled.div`
 padding: 5% 2%;
@@ -126,22 +127,27 @@ const Transactions = props => {
       });
     }
   }, [chosenMonth]);
+
   return (
     <div>
       <AppHeader />
       <div className="content-container">
         <AppMenu />
-        <StyledDiv>
-          <h1>Your Transactions For The Month Of {chosenMonth} </h1>
-          <TransactionPlot
-            headers={plotlyData.headers}
-            transactionArrays={plotlyData.data}
-          />
-          <DateForm setChosenMonth={setChosenMonth} allMonths={allMonths} />
-          <Link to="/" className="button-to-home">
-            Return To Home
-          </Link>
-        </StyledDiv>
+        {transactions ? (
+          <StyledDiv>
+            <h1>Your Transactions For The Month Of {chosenMonth} </h1>
+            <TransactionPlot
+              headers={plotlyData.headers}
+              transactionArrays={plotlyData.data}
+            />
+            <DateForm setChosenMonth={setChosenMonth} allMonths={allMonths} />
+            <Link to="/" className="button-to-home">
+              Return To Home
+            </Link>
+          </StyledDiv>
+        ) : (
+          <Loading />
+        )}
       </div>
     </div>
   );

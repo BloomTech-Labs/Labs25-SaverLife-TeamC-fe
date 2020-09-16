@@ -8,6 +8,7 @@ import CategorizedPlot from './CategorizedPlot';
 import AppHeader from '../../common/AppHeader';
 import AppMenu from '../../common/AppMenu';
 import DateForm from '../../common/DateForm';
+import Loading from '../../common/LoadingComponent';
 
 const StyledDiv = styled.div`
   padding: 5% 2%;
@@ -134,19 +135,24 @@ const CategorizedSpending = props => {
         <AppHeader />
         <div className="content-container">
           <AppMenu />
-          <StyledDiv>
-            <h1>Spending By Category</h1>
-            <h1>Your Spending For {chosenMonth}</h1>
-            <CategorizedPlot
-              className="cat-plot"
-              data={plotlyData.data}
-              categories={plotlyData.categories}
-            />
-            <DateForm allMonths={allMonths} setChosenMonth={setChosenMonth} />
-            <Link to="/" className="button-to-home">
-              Return Home
-            </Link>
-          </StyledDiv>
+
+          {transactions ? (
+            <StyledDiv>
+              <h1>Spending By Category</h1>
+              <h1>Your Spending For {chosenMonth}</h1>
+              <CategorizedPlot
+                className="cat-plot"
+                data={plotlyData.data}
+                categories={plotlyData.categories}
+              />
+              <DateForm allMonths={allMonths} setChosenMonth={setChosenMonth} />
+              <Link to="/" className="button-to-home">
+                Return Home
+              </Link>
+            </StyledDiv>
+          ) : (
+            <Loading />
+          )}
         </div>
       </div>
     </>

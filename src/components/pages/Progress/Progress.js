@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import Loading from '../../common/LoadingComponent';
 
 // Header
 import AppHeader from '../../common/AppHeader';
@@ -104,36 +105,41 @@ const Progress = props => {
   return (
     <div>
       <AppHeader />
-      <div className="content-container">
-        <AppMenu />
-        <Body>
-          <TitleAndBarBox>
-            <Title>Your Progress</Title>
-            <ProgressBar />
-          </TitleAndBarBox>
-          <TextBodyBox>
-            <TextBar>
-              <TextDesc>Goal:</TextDesc> <TextVal>${props.goal}</TextVal>
-            </TextBar>
-            <TextBar>
-              <TextDesc>Day(s) Remaining:</TextDesc>
-              <TextVal>{props.time}</TextVal>
-            </TextBar>
-            <TextBar>
-              <TextDesc>Amount saved:</TextDesc>
-              <TextVal>${props.saved}</TextVal>
-            </TextBar>
-            <TextBar>
-              <TextDesc>Amount left:</TextDesc>
-              <TextVal>${amountToGoal}</TextVal>
-            </TextBar>
-            <TextBar>
-              <TextDesc>Daily Saving Recommendation:</TextDesc>
-              <TextVal>${dailySaving}</TextVal>
-            </TextBar>
-          </TextBodyBox>
-        </Body>
-      </div>
+
+      {Progress ? (
+        <div className="content-container">
+          <AppMenu />
+          <Body>
+            <TitleAndBarBox>
+              <Title>Your Progress</Title>
+              <ProgressBar />
+            </TitleAndBarBox>
+            <TextBodyBox>
+              <TextBar>
+                <TextDesc>Goal:</TextDesc> <TextVal>${props.goal}</TextVal>
+              </TextBar>
+              <TextBar>
+                <TextDesc>Day(s) Remaining:</TextDesc>
+                <TextVal>{props.time}</TextVal>
+              </TextBar>
+              <TextBar>
+                <TextDesc>Amount saved:</TextDesc>
+                <TextVal>${props.saved}</TextVal>
+              </TextBar>
+              <TextBar>
+                <TextDesc>Amount left:</TextDesc>
+                <TextVal>${amountToGoal}</TextVal>
+              </TextBar>
+              <TextBar>
+                <TextDesc>Daily Saving Recommendation:</TextDesc>
+                <TextVal>${dailySaving}</TextVal>
+              </TextBar>
+            </TextBodyBox>
+          </Body>
+        </div>
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 };
