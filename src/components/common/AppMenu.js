@@ -24,27 +24,27 @@ function AppMenu() {
       <ItemGroup title="SaverLife">
         <Item>
           <Link className="link-to" to="/">
-            home component
+            Home
           </Link>
         </Item>
         <Item>
           <Link className="link-to" to="/categories">
-            categories component
+            Spending by Category
           </Link>
         </Item>
         <Item>
           <Link className="link-to" to="/budget">
-            budget component
+            Your Budget
           </Link>
         </Item>
         <Item>
           <Link className="link-to" to="/progress">
-            progress component
+            Your Progress
           </Link>
         </Item>
         <Item>
           <Link className="link-to" to="/transactions">
-            transactions component
+            All Transactions
           </Link>
         </Item>
       </ItemGroup>
