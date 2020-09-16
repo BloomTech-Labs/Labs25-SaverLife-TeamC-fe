@@ -33,11 +33,6 @@ function AppMenu() {
           </Link>
         </Item>
         <Item>
-          <Link className="link-to" to="/profile">
-            profile component
-          </Link>
-        </Item>
-        <Item>
           <Link className="link-to" to="/progress">
             progress component
           </Link>

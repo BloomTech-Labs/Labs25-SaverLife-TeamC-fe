@@ -11,7 +11,7 @@ function GoalsPlot(props) {
         data={[
           {
             domain: { x: [0, 1], y: [0, 1] },
-            value: props.saved,
+            value: `${props.saved}`,
             title: { text: 'Progress Meter' },
             type: 'indicator',
             mode: 'gauge+number',
