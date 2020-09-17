@@ -1,6 +1,7 @@
 //This will show the user's progress... visualization ideation pending TODO
 import React from 'react';
 import { connect } from 'react-redux';
+import Loading from '../../common/LoadingComponent';
 
 // Header
 import AppHeader from '../../common/AppHeader';
