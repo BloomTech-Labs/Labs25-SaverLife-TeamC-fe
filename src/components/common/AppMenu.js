@@ -2,6 +2,7 @@ import React from 'react';
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useOktaAuth } from '@okta/okta-react';
 
 const { Item, ItemGroup } = Menu;
 
@@ -16,27 +17,22 @@ const StyledMenu = styled(Menu)`
 `;
 
 function AppMenu() {
-  const handleClick = e => {
-    console.log('click ', e);
-  };
+  const { authState, authService } = useOktaAuth();
+
   return (
-    <StyledMenu className="menu toggle-menu" onClick={handleClick}>
+    <StyledMenu className="menu toggle-menu">
       <ItemGroup title="SaverLife">
         <Item>
           <Link className="link-to" to="/">
-            home component
+            Home
           </Link>
         </Item>
         <Item>
           <Link className="link-to" to="/categories">
-            categories component
+            Spending By Category
           </Link>
         </Item>
-        <Item>
-          <Link className="link-to" to="/budget">
-            budget component
-          </Link>
-        </Item>
+
         <Item>
           <Link className="link-to" to="/profile">
             profile component
@@ -44,12 +40,22 @@ function AppMenu() {
         </Item>
         <Item>
           <Link className="link-to" to="/progress">
-            progress component
+            Progress
           </Link>
         </Item>
         <Item>
           <Link className="link-to" to="/transactions">
-            transactions component
+            Transactions
+          </Link>
+        </Item>
+        <Item>
+          <Link className="link-to" to="/budget">
+            My Profile
+          </Link>
+        </Item>
+        <Item onClick={() => authService.logout()}>
+          <Link className="link-to" to="/login">
+            Log Out
           </Link>
         </Item>
       </ItemGroup>
