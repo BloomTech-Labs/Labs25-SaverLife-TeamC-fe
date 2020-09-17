@@ -179,11 +179,6 @@ function RenderHomePage(props) {
 
             {/* Predicted Budget */}
           </div>
-          <div>
-            <Button type="primary" onClick={() => authService.logout()}>
-              Logout
-            </Button>
-          </div>
         </StyledDiv>
       </div>
     </div>
