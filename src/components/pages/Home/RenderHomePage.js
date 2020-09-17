@@ -8,7 +8,8 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 // Graphs
-import CategorizedPlot from './Graphs/CategorizedPlot';
+// import CategorizedPlot from './Graphs/CategorizedPlot';
+import CategorizedPlotWrapper from '../CategorizedSpending/CategorizedPlotWrapper';
 import TransactionPlot from './Graphs/TransactionPlot';
 import GoalsPlot from './Graphs/GoalsPlot';
 
@@ -153,10 +154,7 @@ function RenderHomePage(props) {
                 <p>Spending By Category</p>
               </div>
               <div className="card-body">
-                <CategorizedPlot
-                  categories={categoryList}
-                  data={categoriesData}
-                />
+                <CategorizedPlotWrapper />
                 <Link to="/categories" className="right-button">
                   See Spending By Category
                 </Link>

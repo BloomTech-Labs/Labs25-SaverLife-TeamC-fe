@@ -4,11 +4,9 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import CategorizedPlot from './CategorizedPlot';
+import CategorizedPlotWrapper from './CategorizedPlotWrapper';
 import AppHeader from '../../common/AppHeader';
 import AppMenu from '../../common/AppMenu';
-import DateForm from '../../common/DateForm';
-import Loading from '../../common/LoadingComponent';
 
 const StyledDiv = styled.div`
   padding: 5% 2%;
@@ -42,93 +40,6 @@ const mapStateToProps = state => {
   };
 };
 const CategorizedSpending = props => {
-  const { state } = props;
-  const transactions = state.transactionReducer.data;
-
-  //This will not be functional until i have the actual date time formats from DS
-  const [chosenMonth, setChosenMonth] = useState(null);
-  const [plotlyData, setPlotlyData] = useState({
-    data: [],
-    categories: [],
-  });
-
-  //find the latest Month in the data to set chosen month
-  let latestYear = 0;
-  let latestMonth = 0;
-  let dateOptions = {};
-  transactions.forEach(trans => {
-    //break up year and month so we can compare
-    const year = parseInt(trans.date.split('-')[0]);
-    const month = parseInt(trans.date.split('-')[1]);
-
-    //compare and remember most recent date
-    if (year > latestYear) {
-      if (month > latestMonth) {
-        latestYear = year;
-        latestMonth = month;
-      }
-    }
-
-    //Turn it into a string for storage
-    let monthYear = year + '-' + month;
-    //see if it's in our dates
-    if (!(monthYear in dateOptions)) {
-      dateOptions[monthYear] = true;
-    }
-  });
-
-  //let's also create an array of months for our drop-down
-
-  const allMonths = Object.keys(dateOptions);
-
-  //This is where we'll store the data for the graph
-  let categoriesSpending = {};
-  let categoryList = [];
-  let categoriesData = [];
-
-  useEffect(() => {
-    if (chosenMonth == null) {
-      //okay if this is the first time, we have the last month/year, let's set it. Now we can do everything else in the useeffect hook.
-      setChosenMonth(latestYear + '-' + latestMonth);
-    } else {
-      //Every time that chosenMonth is updated, this will update the plotly chart
-
-      //Accumulate all spending for the chosen month
-      //clear the dictionary
-      categoriesSpending = {};
-
-      //Accumulate
-      transactions.forEach(trans => {
-        const filterDate =
-          trans.date.split('-')[0] + '-' + trans.date.split('-')[1];
-        //we need to filter for the chosen month!
-        if (chosenMonth == filterDate) {
-          if (!(trans.category in categoriesSpending)) {
-            categoriesSpending[trans.category] = trans.amount;
-          } else {
-            categoriesSpending[trans.category] =
-              categoriesSpending[trans.category] + trans.amount;
-          }
-        }
-      });
-
-      //Get a list of categories for use in plotly
-      let categoryList = Object.keys(categoriesSpending);
-
-      //Get a list of amounts for use in plotly
-      categoriesData = [];
-      categoryList.forEach(cat => {
-        categoriesData.push(categoriesSpending[cat]);
-      });
-
-      //update state
-      setPlotlyData({
-        data: categoriesData,
-        categories: categoryList,
-      });
-    }
-  }, [chosenMonth]);
-
   return (
     <>
       <div>
@@ -136,23 +47,15 @@ const CategorizedSpending = props => {
         <div className="content-container">
           <AppMenu />
 
-          {transactions ? (
-            <StyledDiv>
-              <h1>Spending By Category</h1>
-              <h1>Your Spending For {chosenMonth}</h1>
-              <CategorizedPlot
-                className="cat-plot"
-                data={plotlyData.data}
-                categories={plotlyData.categories}
-              />
-              <DateForm allMonths={allMonths} setChosenMonth={setChosenMonth} />
-              <Link to="/" className="button-to-home">
-                Return Home
-              </Link>
-            </StyledDiv>
-          ) : (
-            <Loading />
-          )}
+          <StyledDiv>
+            <h1>Spending By Category</h1>
+            {/* <h1>Your Spending For {chosenMonth}</h1> */}
+            <CategorizedPlotWrapper showDate={true} className="cat-plot" />
+
+            <Link to="/" className="button-to-home">
+              Return Home
+            </Link>
+          </StyledDiv>
         </div>
       </div>
     </>

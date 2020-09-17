@@ -13,8 +13,7 @@ function DateForm(props) {
   const { setChosenMonth, allMonths } = props;
 
   const updateChartDate = e => {
-    const form = document.getElementById('categorized-spending-dates');
-    setChosenMonth(form.value);
+    setChosenMonth(e.target.value);
   };
 
   return (
