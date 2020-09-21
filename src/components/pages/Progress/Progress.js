@@ -11,6 +11,7 @@ import AppMenu from '../../common/AppMenu';
 import styled from 'styled-components';
 import ProgressBar from './ProgressBar';
 import SavingsModal from './SavingsModal';
+import GoalModal from './GoalModal';
 
 const Body = styled.div`
   width: 100%;
@@ -114,18 +115,22 @@ const Progress = props => {
           </TitleAndBarBox>
           <TextBodyBox>
             <TextBar>
-              <TextDesc>Goal:</TextDesc> <TextVal>${props.goal}</TextVal>
+              <TextDesc>Savings Goal:</TextDesc>{' '}
+              <TextVal>
+                ${props.goal}
+                <GoalModal />
+              </TextVal>
             </TextBar>
             <TextBar>
               <TextDesc>Day(s) Remaining:</TextDesc>
               <TextVal>{props.time}</TextVal>
             </TextBar>
             <TextBar>
-              <TextDesc>Amount saved:</TextDesc>
+              <TextDesc>Amount Saved:</TextDesc>
               <TextVal>${props.saved}</TextVal>
             </TextBar>
             <TextBar>
-              <TextDesc>Amount left:</TextDesc>
+              <TextDesc>Amount Left:</TextDesc>
               <TextVal>${amountToGoal}</TextVal>
             </TextBar>
             <TextBar>
