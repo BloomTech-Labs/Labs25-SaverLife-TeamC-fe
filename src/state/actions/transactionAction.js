@@ -5,7 +5,9 @@ export const fetchTransactionData = () => {
   userId = userId.idToken.claims.sub;
   return dispatch => {
     axios
-      .get(`http://localhost:8000/api/transactions/profile/${userId}`)
+      .get(
+        `https://saver-life-team-c.herokuapp.com/api/transactions/profile/${userId}`
+      )
       .then(res => {
         res.data.map(item => {
           dispatch({ type: 'FETCH_TRANSACTION_DATA_SUCCESS', payload: item });
