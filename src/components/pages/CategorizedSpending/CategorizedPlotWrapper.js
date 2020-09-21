@@ -32,7 +32,7 @@ const CategorizedPlotWrapper = props => {
   };
   useEffect(() => {
     axios
-      .get('http://localhost:8000/api/categories/graph')
+      .get('https://saver-life-team-c.herokuapp.com/categories/graph')
       .then(response => {
         setCData(response.data.data);
       })
