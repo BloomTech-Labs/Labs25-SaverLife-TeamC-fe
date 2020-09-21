@@ -1,3 +1,4 @@
+/*
 const initialState = {
   data: [
     {
@@ -464,7 +465,25 @@ const initialState = {
     },
   ],
 };
+*/
+const initialState = {
+  data: [],
+};
 
 export const transactionReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'FETCH_TRANSACTION_DATA_SUCCESS':
+      return {
+        ...state,
+        data: [
+          ...state.data,
+          {
+            category: action.payload.merchant,
+            date: action.payload.date,
+            amount: action.payload.amount,
+          },
+        ],
+      };
+  }
   return state;
 };
