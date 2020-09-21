@@ -17,7 +17,6 @@ import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
 import { CategorizedSpending } from './components/pages/CategorizedSpending';
 import { PredictiveBudget } from './components/pages/PredictiveBudget';
-import { Profile } from './components/pages/Profile';
 import { Progress } from './components/pages/Progress';
 import { Transactions } from './components/pages/Transactions';
 import { OnboardingFlow } from './components/pages/UserOnboarding';
@@ -77,7 +76,6 @@ function App() {
           exact
           component={() => <PredictiveBudget />}
         />
-        <SecureRoute path="/profile" exact component={() => <Profile />} />
         <SecureRoute path="/progress" exact component={() => <Progress />} />
         <SecureRoute
           path="/transactions"

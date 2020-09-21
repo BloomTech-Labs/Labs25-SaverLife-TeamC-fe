@@ -1,5 +1,4 @@
 //This will show the user's progress... visualization ideation pending TODO
-
 import React from 'react';
 import { connect } from 'react-redux';
 import Loading from '../../common/LoadingComponent';
@@ -11,6 +10,7 @@ import AppMenu from '../../common/AppMenu';
 
 import styled from 'styled-components';
 import ProgressBar from './ProgressBar';
+import SavingsModal from './SavingsModal';
 
 const Body = styled.div`
   width: 100%;
@@ -105,46 +105,50 @@ const Progress = props => {
   return (
     <div>
       <AppHeader />
-
-      {Progress ? (
-        <div className="content-container">
-          <AppMenu />
-          <Body>
-            <TitleAndBarBox>
-              <Title>Your Progress</Title>
-              <ProgressBar />
-            </TitleAndBarBox>
-            <TextBodyBox>
-              <TextBar>
-                <TextDesc>Goal:</TextDesc> <TextVal>${props.goal}</TextVal>
-              </TextBar>
-              <TextBar>
-                <TextDesc>Day(s) Remaining:</TextDesc>
-                <TextVal>{props.time}</TextVal>
-              </TextBar>
-              <TextBar>
-                <TextDesc>Amount saved:</TextDesc>
-                <TextVal>${props.saved}</TextVal>
-              </TextBar>
-              <TextBar>
-                <TextDesc>Amount left:</TextDesc>
-                <TextVal>${amountToGoal}</TextVal>
-              </TextBar>
-              <TextBar>
-                <TextDesc>Daily Saving Recommendation:</TextDesc>
-                <TextVal>${dailySaving}</TextVal>
-              </TextBar>
-            </TextBodyBox>
-          </Body>
-        </div>
-      ) : (
-        <Loading />
-      )}
+      <div className="content-container">
+        <AppMenu />
+        <Body>
+          <TitleAndBarBox>
+            <Title>Your Progress</Title>
+            <ProgressBar />
+          </TitleAndBarBox>
+          <TextBodyBox>
+            <TextBar>
+              <TextDesc>Goal:</TextDesc> <TextVal>${props.goal}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>Day(s) Remaining:</TextDesc>
+              <TextVal>{props.time}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>Amount saved:</TextDesc>
+              <TextVal>${props.saved}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>Amount left:</TextDesc>
+              <TextVal>${amountToGoal}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>Daily Saving Recommendation:</TextDesc>
+              <TextVal>${dailySaving}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>
+                Save Towards
+                <br />
+                Your Goal:
+              </TextDesc>
+              <TextVal>
+                <SavingsModal />
+              </TextVal>
+            </TextBar>
+          </TextBodyBox>
+        </Body>
+      </div>
     </div>
   );
 };
 
-//export default Progress;
 const mapStateToProps = state => {
   return {
     saved: state.goalReducer.saved,

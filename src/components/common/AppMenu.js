@@ -29,33 +29,22 @@ function AppMenu() {
         </Item>
         <Item>
           <Link className="link-to" to="/categories">
-            Spending By Category
-          </Link>
-        </Item>
-
-        <Item>
-          <Link className="link-to" to="/profile">
-            profile component
-          </Link>
-        </Item>
-        <Item>
-          <Link className="link-to" to="/progress">
-            Progress
-          </Link>
-        </Item>
-        <Item>
-          <Link className="link-to" to="/transactions">
-            Transactions
+            Spending by Category
           </Link>
         </Item>
         <Item>
           <Link className="link-to" to="/budget">
-            My Profile
+            Your Budget
           </Link>
         </Item>
-        <Item onClick={() => authService.logout()}>
-          <Link className="link-to" to="/login">
-            Log Out
+        <Item>
+          <Link className="link-to" to="/progress">
+            Your Progress
+          </Link>
+        </Item>
+        <Item>
+          <Link className="link-to" to="/transactions">
+            All Transactions
           </Link>
         </Item>
       </ItemGroup>
