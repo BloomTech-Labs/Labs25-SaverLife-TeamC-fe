@@ -8,7 +8,6 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 // Graphs
-// import CategorizedPlot from './Graphs/CategorizedPlot';
 import CategorizedPlotWrapper from '../CategorizedSpending/CategorizedPlotWrapper';
 import TransactionPlot from './Graphs/TransactionPlot';
 import GoalsPlot from './Graphs/GoalsPlot';
