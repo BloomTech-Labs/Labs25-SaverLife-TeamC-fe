@@ -1,6 +1,6 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+import SavingsForm from './SavingsForm';
 
 const customStyles = {
   content: {
@@ -10,6 +10,8 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    height: '20%',
+    fontSize: '20px',
   },
 };
 
@@ -21,7 +23,6 @@ function SavingsModal() {
   }
 
   function afterOpenModal() {
-    // references are now sync'd and can be accessed.
     subtitle.style.color = '#c01089';
   }
 
@@ -42,8 +43,8 @@ function SavingsModal() {
         <h2 ref={_subtitle => (subtitle = _subtitle)}>
           How much would you like to save?
         </h2>
-        <form>{/* form will go here */}</form>
-        <button onClick={closeModal}>close</button>
+        <SavingsForm />
+        <button onClick={closeModal}>cancel</button>
       </Modal>
     </div>
   );

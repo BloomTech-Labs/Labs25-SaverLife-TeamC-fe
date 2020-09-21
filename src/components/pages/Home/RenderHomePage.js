@@ -77,6 +77,7 @@ const mapStateToProps = state => {
 //TODO: move these cards into separate components probably
 function RenderHomePage(props) {
   const { userInfo, authService, state } = props;
+  console.log({ props });
   const transactions = state.transactionReducer.data;
   // get 5 most recent transactions for the table
   //THIS IS FOR TRANSACTIONS
@@ -177,11 +178,6 @@ function RenderHomePage(props) {
             </div>
 
             {/* Predicted Budget */}
-          </div>
-          <div>
-            <Button type="primary" onClick={() => authService.logout()}>
-              Logout
-            </Button>
           </div>
         </StyledDiv>
       </div>
