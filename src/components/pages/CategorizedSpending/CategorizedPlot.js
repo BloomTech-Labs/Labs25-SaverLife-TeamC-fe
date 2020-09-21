@@ -2,7 +2,7 @@ import React from 'react';
 import Plot from 'react-plotly.js';
 
 function CategorizedPlot(props) {
-  const { data } = props;
+  const { data, height, width } = props;
 
   return (
     <>
@@ -11,15 +11,12 @@ function CategorizedPlot(props) {
           data={data}
           layout={{
             autosize: true,
-            flex: 2,
-            margin: { l: 200, r: 0, t: 0, b: 0, pad: 15 },
+            margin: { pad: 15 },
             yaxis: {
               type: 'category',
               automargin: true,
               tickmode: 'linear',
-              // font: {
-              //   size: 400,
-              // },
+              dtick: ' ',
             },
             xaxis: {
               tickangle: -45,

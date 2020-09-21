@@ -154,7 +154,7 @@ function RenderHomePage(props) {
                 <p>Spending By Category</p>
               </div>
               <div className="card-body">
-                <CategorizedPlotWrapper />
+                <CategorizedPlotWrapper height={1000} width={500} />
                 <Link to="/categories" className="right-button">
                   See Spending By Category
                 </Link>

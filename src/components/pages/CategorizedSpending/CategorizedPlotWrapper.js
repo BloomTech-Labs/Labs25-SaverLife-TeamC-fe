@@ -6,8 +6,18 @@ import DateForm from '../../common/DateForm';
 import axios from 'axios';
 
 const CategorizedPlotWrapper = props => {
+  const { height, width } = props;
   const [cData, setCData] = useState();
+  const getCurrentMonth = () => {
+    for (const d of cData) {
+      if (d.visible === true) {
+        return d.name;
+      }
+    }
+    return '';
+  };
   const setChosenMonth = m => {
+    console.log(m);
     setCData(prev => {
       return prev.map(cm => {
         if (cm.name === m) {
@@ -18,6 +28,7 @@ const CategorizedPlotWrapper = props => {
         return cm;
       });
     });
+    console.log(cData);
   };
   useEffect(() => {
     axios
@@ -34,11 +45,17 @@ const CategorizedPlotWrapper = props => {
     <>
       {cData ? (
         <>
-          <CategorizedPlot className="cat-plot" data={cData} />
+          <CategorizedPlot
+            className="cat-plot"
+            data={cData}
+            height={height}
+            width={width}
+          />
           {props.showDate ? (
             <DateForm
               allMonths={cData.map(m => m.name)}
               setChosenMonth={setChosenMonth}
+              currentMonth={getCurrentMonth()}
             />
           ) : null}
         </>

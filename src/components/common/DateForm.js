@@ -10,7 +10,7 @@ const StyledDiv = styled.div`
   }
 `;
 function DateForm(props) {
-  const { setChosenMonth, allMonths } = props;
+  const { setChosenMonth, allMonths, currentMonth } = props;
 
   const updateChartDate = e => {
     setChosenMonth(e.target.value);
@@ -24,6 +24,7 @@ function DateForm(props) {
           onChange={updateChartDate}
           name="dates"
           id="categorized-spending-dates"
+          value={currentMonth}
         >
           {allMonths.map((month, i) => {
             return (
