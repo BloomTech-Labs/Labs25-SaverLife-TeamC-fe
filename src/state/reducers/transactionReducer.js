@@ -1,4 +1,3 @@
-/*
 const initialState = {
   data: [
     {
@@ -465,10 +464,10 @@ const initialState = {
     },
   ],
 };
-*/
-const initialState = {
-  data: [],
-};
+
+// const initialState = {
+//   data: [],
+// };
 
 export const transactionReducer = (state = initialState, action) => {
   switch (action.type) {
