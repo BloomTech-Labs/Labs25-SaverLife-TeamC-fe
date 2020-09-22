@@ -26,10 +26,8 @@ function TransactionPlot(props) {
             },
           },
         ]}
-        layout={{
-          width: 250,
-          height: 150,
-          margin: { l: 0, r: 0, t: 0, b: 0 },
+        config={{
+          responsive: true,
         }}
       />
     </>
