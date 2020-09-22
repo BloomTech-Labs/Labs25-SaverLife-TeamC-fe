@@ -12,6 +12,7 @@ import styled from 'styled-components';
 import ProgressBar from './ProgressBar';
 import SavingsModal from './SavingsModal';
 import GoalModal from './GoalModal';
+import PickDate from './PickDate';
 
 const Body = styled.div`
   width: 100%;
@@ -123,8 +124,7 @@ const Progress = props => {
             <TextBar>
               <TextDesc>I want to reach my savings goal by...</TextDesc>{' '}
               <TextVal>
-                11/9 {/* display end date here */}
-                {/* date modal here */}
+                <PickDate />
               </TextVal>
             </TextBar>
             <TextBar>
