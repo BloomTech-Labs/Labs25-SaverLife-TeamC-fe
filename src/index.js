@@ -16,7 +16,6 @@ import { HomePage } from './components/pages/Home';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
 import { CategorizedSpending } from './components/pages/CategorizedSpending';
-import { PredictiveBudget } from './components/pages/PredictiveBudget';
 import { Progress } from './components/pages/Progress';
 import { Transactions } from './components/pages/Transactions';
 import { OnboardingFlow } from './components/pages/UserOnboarding';
@@ -69,12 +68,6 @@ function App() {
           path="/categories"
           exact
           component={() => <CategorizedSpending />}
-        />
-
-        <SecureRoute
-          path="/budget"
-          exact
-          component={() => <PredictiveBudget />}
         />
         <SecureRoute path="/progress" exact component={() => <Progress />} />
         <SecureRoute

@@ -115,10 +115,16 @@ const Progress = props => {
           </TitleAndBarBox>
           <TextBodyBox>
             <TextBar>
-              <TextDesc>Savings Goal:</TextDesc>{' '}
+              <TextDesc>Savings Goal: ${props.goal}</TextDesc>{' '}
               <TextVal>
-                ${props.goal}
                 <GoalModal />
+              </TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>I want to reach my savings goal by...</TextDesc>{' '}
+              <TextVal>
+                11/9 {/* display end date here */}
+                {/* date modal here */}
               </TextVal>
             </TextBar>
             <TextBar>
