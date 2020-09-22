@@ -128,22 +128,6 @@ const Progress = props => {
               </TextVal>
             </TextBar>
             <TextBar>
-              <TextDesc>Day(s) Remaining:</TextDesc>
-              <TextVal>{props.time}</TextVal>
-            </TextBar>
-            <TextBar>
-              <TextDesc>Amount Saved:</TextDesc>
-              <TextVal>${props.saved}</TextVal>
-            </TextBar>
-            <TextBar>
-              <TextDesc>Amount Left:</TextDesc>
-              <TextVal>${amountToGoal}</TextVal>
-            </TextBar>
-            <TextBar>
-              <TextDesc>Daily Saving Recommendation:</TextDesc>
-              <TextVal>${dailySaving}</TextVal>
-            </TextBar>
-            <TextBar>
               <TextDesc>
                 Save Towards
                 <br />
@@ -151,6 +135,44 @@ const Progress = props => {
               </TextDesc>
               <TextVal>
                 <SavingsModal />
+              </TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>Amount Saved:</TextDesc>
+              <TextVal>${props.saved}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>
+                Month(s) Until <br />
+                Goal is Reached:
+              </TextDesc>
+              <TextVal>{props.time}</TextVal>
+            </TextBar>
+            {/* Don't think we need this card */}
+            {/* <TextBar>
+              <TextDesc>Amount Left:</TextDesc>
+              <TextVal>${amountToGoal}</TextVal>
+            </TextBar> */}
+            <TextBar>
+              <TextDesc>Daily Saving Recommendation:</TextDesc>
+              <TextVal>${dailySaving}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>
+                Your Suggested
+                <br />
+                Budget:
+              </TextDesc>
+              <TextVal>{/* facy budget graph? */}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>
+                Next Months
+                <br />
+                Money Forecast:
+              </TextDesc>
+              <TextVal>
+                {/* maybe put some sort of negative/postitive graph */}
               </TextVal>
             </TextBar>
           </TextBodyBox>
