@@ -138,11 +138,7 @@ const CategorizedSpending = props => {
           <StyledDiv>
             <h1>Spending By Category</h1>
             <h1>Your Spending For {chosenMonth}</h1>
-            {/* <CategorizedPlot
-              className="cat-plot"
-              data={plotlyData.data}
-              categories={plotlyData.categories}
-            /> */}
+            
             <BudgetPlot
               className="cat-plot"
               data={plotlyData.data}
