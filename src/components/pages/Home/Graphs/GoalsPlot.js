@@ -22,10 +22,8 @@ function GoalsPlot(props) {
             },
           },
         ]}
-        layout={{
-          width: 300,
-          height: 300,
-          margin: { l: 30, r: 90, t: 30, b: 30 },
+        config={{
+          responsive: true,
         }}
       />
     </div>

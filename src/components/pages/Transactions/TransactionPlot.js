@@ -26,10 +26,8 @@ const TransactionsPlot = props => {
             },
           },
         ]}
-        layout={{
-          width: 250,
-          height: 400,
-          margin: { l: 0, r: 0, t: 0, b: 0 },
+        config={{
+          responsive: true,
         }}
       />
     </>
