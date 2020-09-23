@@ -33,11 +33,6 @@ function AppMenu() {
           </Link>
         </Item>
         <Item>
-          <Link className="link-to" to="/budget">
-            Your Budget
-          </Link>
-        </Item>
-        <Item>
           <Link className="link-to" to="/progress">
             Your Progress
           </Link>

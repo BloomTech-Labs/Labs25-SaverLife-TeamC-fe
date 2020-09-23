@@ -6,16 +6,18 @@ import Loading from '../../common/LoadingComponent';
 // Header
 import AppHeader from '../../common/AppHeader';
 import AppMenu from '../../common/AppMenu';
-// Header end
 
+// Header end
 import styled from 'styled-components';
 import ProgressBar from './ProgressBar';
 import SavingsModal from './SavingsModal';
 import GoalModal from './GoalModal';
+import PickDate from './PickDate';
+import MoneyForecastGraph from './MoneyForecastGraph';
 
 const Body = styled.div`
   width: 100%;
-  height: 800px;
+  height: 1300px;
   margin: 20% 0;
   background-color: #00a6af;
 
@@ -26,7 +28,7 @@ const Body = styled.div`
 
   @media only screen and (min-width: 600px) {
     margin: 10% 0;
-    height: 1080px;
+    height: 1400px;
   }
 `;
 
@@ -82,7 +84,7 @@ const TextBar = styled.div`
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 2px 3px rgba(0, 0, 0, 0.2);
 
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 
   @media only screen and (min-width: 600px) {
@@ -115,27 +117,16 @@ const Progress = props => {
           </TitleAndBarBox>
           <TextBodyBox>
             <TextBar>
-              <TextDesc>Savings Goal:</TextDesc>{' '}
+              <TextDesc>Savings Goal: ${props.goal}</TextDesc>{' '}
               <TextVal>
-                ${props.goal}
                 <GoalModal />
               </TextVal>
             </TextBar>
             <TextBar>
-              <TextDesc>Day(s) Remaining:</TextDesc>
-              <TextVal>{props.time}</TextVal>
-            </TextBar>
-            <TextBar>
-              <TextDesc>Amount Saved:</TextDesc>
-              <TextVal>${props.saved}</TextVal>
-            </TextBar>
-            <TextBar>
-              <TextDesc>Amount Left:</TextDesc>
-              <TextVal>${amountToGoal}</TextVal>
-            </TextBar>
-            <TextBar>
-              <TextDesc>Daily Saving Recommendation:</TextDesc>
-              <TextVal>${dailySaving}</TextVal>
+              <TextDesc>I want to reach my savings goal by...</TextDesc>{' '}
+              <TextVal>
+                <PickDate />
+              </TextVal>
             </TextBar>
             <TextBar>
               <TextDesc>
@@ -145,6 +136,35 @@ const Progress = props => {
               </TextDesc>
               <TextVal>
                 <SavingsModal />
+              </TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>Amount Saved:</TextDesc>
+              <TextVal>${props.saved}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>
+                Month(s) Until <br />
+                Goal is Reached:
+              </TextDesc>
+              <TextVal>{props.time}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>
+                Your Suggested
+                <br />
+                Budget:
+              </TextDesc>
+              <TextVal>{/* fancy budget graph? */}</TextVal>
+            </TextBar>
+            <TextBar>
+              <TextDesc>
+                Next Months
+                <br />
+                Money Forecast:
+              </TextDesc>
+              <TextVal>
+                <MoneyForecastGraph />
               </TextVal>
             </TextBar>
           </TextBodyBox>

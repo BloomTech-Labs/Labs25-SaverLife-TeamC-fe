@@ -58,9 +58,6 @@ const NavBar = props => {
       <NaviLinks to="/categories" activeClassName="selected">
         Categories
       </NaviLinks>
-      <NaviLinks to="/budget" activeClassName="selected">
-        Budget
-      </NaviLinks>
       <NaviLinks to="/progress" activeClassName="selected">
         Progress
       </NaviLinks>

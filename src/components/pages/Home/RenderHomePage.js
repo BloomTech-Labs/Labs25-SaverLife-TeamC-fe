@@ -173,8 +173,6 @@ function RenderHomePage(props) {
                 </Link>
               </div>
             </div>
-
-            {/* Predicted Budget */}
           </div>
         </StyledDiv>
       </div>
