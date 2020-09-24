@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import './SavingsForm.css';
 
-const GoalForm = () => {
+import { inputGoal, fetchBudget } from '../../../state/actions/profileActions';
+import { connect } from 'react-redux';
+import axios from 'axios';
+
+const GoalForm = props => {
   const [goal, setGoal] = useState({
     goalAmount: '',
   });
@@ -12,6 +16,8 @@ const GoalForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     setGoal({ singleAmount: '' });
+    props.inputGoal(goal.goalAmount);
+    props.fetchBudget();
   };
   return (
     <form onSubmit={handleSubmit} className="savings-form">
@@ -20,7 +26,7 @@ const GoalForm = () => {
         name="goalAmount"
         id="goal"
         type="text"
-        placeholder="350"
+        placeholder={props.stateGoal}
         onChange={onChange}
         value={goal.goalAmount}
       />
@@ -29,4 +35,9 @@ const GoalForm = () => {
   );
 };
 
-export default GoalForm;
+const mapStateToProps = state => {
+  return {
+    stateGoal: state.goalReducer.goal,
+  };
+};
+export default connect(mapStateToProps, { inputGoal, fetchBudget })(GoalForm);

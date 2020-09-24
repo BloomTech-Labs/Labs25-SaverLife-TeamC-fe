@@ -9,6 +9,11 @@ const initialState = {
 
 export const goalReducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'SET_GOAL_SUCCESS':
+      return {
+        state,
+        goal: action.payload.goalAmount,
+      };
     case 'FETCH_BUDGET_SUCCESS':
       return {
         ...state,

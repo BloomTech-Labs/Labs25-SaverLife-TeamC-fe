@@ -1,4 +1,5 @@
 import axios from 'axios';
+//import {axiosWithAuth} from '../../utils/axiosWithAuth';
 
 export const fetchProfile = () => {
   let userId = JSON.parse(window.localStorage.getItem('okta-token-storage'));
@@ -18,11 +19,17 @@ export const inputGoal = inputData => {
   userId = userId.idToken.claims.sub;
   let inputBody = {
     id: userId,
-    goalAmount: inputData.goalAmount,
-    goalEndYear: inputData.goalEndYear,
-    goalEndMonth: inputData.goalEndMonth,
+
+    goalAmount: inputData,
   };
-  axios.put('https://saver-life-team-c.herokuapp.com/profile/', inputBody);
+  return dispatch => {
+    axios
+      .put('https://saver-life-team-c.herokuapp.com/profile/', inputBody)
+      .then(res => {
+        dispatch({ type: 'SET_GOAL_SUCCESS', payload: res.data.profile });
+      });
+  };
+
 };
 
 export const fetchBudget = () => {
