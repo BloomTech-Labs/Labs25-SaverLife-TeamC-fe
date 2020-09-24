@@ -4,7 +4,12 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import CategorizedPlot from './CategorizedPlot';
+import BudgetPlot from './BudgetPlot';
+
 import CategorizedPlotWrapper from './CategorizedPlotWrapper';
+
 import AppHeader from '../../common/AppHeader';
 import AppMenu from '../../common/AppMenu';
 
@@ -49,8 +54,10 @@ const CategorizedSpending = props => {
 
           <StyledDiv>
             <h1>Spending By Category</h1>
+
             {/* <h1>Your Spending For {chosenMonth}</h1> */}
             <CategorizedPlotWrapper showDate={true} className="cat-plot" />
+
 
             <Link to="/" className="button-to-home">
               Return Home
