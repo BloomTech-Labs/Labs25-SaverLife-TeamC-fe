@@ -7,8 +7,11 @@ import AppMenu from '../../common/AppMenu';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import CategorizedPlot from './Graphs/CategorizedPlot';
+// Graphs
+import CategorizedPlotWrapper from '../CategorizedSpending/CategorizedPlotWrapper';
 import TransactionPlot from './Graphs/TransactionPlot';
+import GoalsPlot from './Graphs/GoalsPlot';
+
 const StyledDiv = styled.div`
   padding: 5% 2%;
   h1 {
@@ -74,6 +77,7 @@ const mapStateToProps = state => {
 //TODO: move these cards into separate components probably
 function RenderHomePage(props) {
   const { userInfo, authService, state } = props;
+  console.log({ props });
   const transactions = state.transactionReducer.data;
   // get 5 most recent transactions for the table
   //THIS IS FOR TRANSACTIONS
@@ -150,21 +154,25 @@ function RenderHomePage(props) {
                 <p>Spending By Category</p>
               </div>
               <div className="card-body">
-                <CategorizedPlot
-                  categories={categoryList}
-                  data={categoriesData}
-                />
+                <CategorizedPlotWrapper height={1000} width={500} />
                 <Link to="/categories" className="right-button">
                   See Spending By Category
                 </Link>
               </div>
             </div>
-            {/* Predicted Budget */}
-          </div>
-          <div>
-            <Button type="primary" onClick={() => authService.logout()}>
-              Logout
-            </Button>
+
+            {/* Goals Meter */}
+            <div className="dash-card goal-summary">
+              <div className="card-title">
+                <p>Progress Meter</p>
+              </div>
+              <div className="card-body">
+                <GoalsPlot />
+                <Link to="/progress" className="right-button">
+                  See All Progress
+                </Link>
+              </div>
+            </div>
           </div>
         </StyledDiv>
       </div>

@@ -1,6 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Styled from 'styled-components';
+import { connect } from 'react-redux';
+import { Button } from 'antd';
+import { useOktaAuth } from '@okta/okta-react';
 
 const Navigation = Styled.div`
 display:none;
@@ -39,7 +42,14 @@ font-size: 1.5rem;
     }
 `;
 
-const NavBar = () => {
+const mapStateToProps = state => {
+  return {
+    state: state,
+  };
+};
+const NavBar = props => {
+  const { authState, authService } = useOktaAuth();
+  console.log(props);
   return (
     <Navigation>
       <NaviLinks to="/" activeClassName="selected">
@@ -48,19 +58,18 @@ const NavBar = () => {
       <NaviLinks to="/categories" activeClassName="selected">
         Categories
       </NaviLinks>
-      <NaviLinks to="/budget" activeClassName="selected">
-        Budget
-      </NaviLinks>
-      <NaviLinks to="/profile" activeClassName="selected">
-        Profile
-      </NaviLinks>
       <NaviLinks to="/progress" activeClassName="selected">
         Progress
       </NaviLinks>
       <NaviLinks to="/transactions" activeClassName="selected">
         Transactions
       </NaviLinks>
+      <div className="logout-onclick" onClick={() => authService.logout()}>
+        <NaviLinks to="/login" activeClassName="selected">
+          Logout
+        </NaviLinks>
+      </div>
     </Navigation>
   );
 };
-export default NavBar;
+export default connect(mapStateToProps, {})(NavBar);

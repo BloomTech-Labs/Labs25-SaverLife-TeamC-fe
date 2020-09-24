@@ -1,10 +1,23 @@
 const initialState = {
-  goal: 400,
-  budget: 750,
-  timeLeft: 30,
-  saved: 162.14,
+  goal: 0,
+  endYear: 0,
+  endMonth: 0,
+  monthLeft: 0,
+  nextMonthForcast: 0,
+  suggestedBudget: 0,
 };
 
 export const goalReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'FETCH_BUDGET_SUCCESS':
+      return {
+        ...state,
+        goal: action.payload.goalAmount,
+        endYear: action.payload.goalEndYear,
+        endMonth: action.payload.goalEndMonth,
+        monthLeft: action.payload.monthLeft,
+        nextMonthForcast: action.payload.next,
+      };
+  }
   return state;
 };

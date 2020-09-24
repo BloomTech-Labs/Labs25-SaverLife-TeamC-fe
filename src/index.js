@@ -16,8 +16,6 @@ import { HomePage } from './components/pages/Home';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
 import { CategorizedSpending } from './components/pages/CategorizedSpending';
-import { PredictiveBudget } from './components/pages/PredictiveBudget';
-import { Profile } from './components/pages/Profile';
 import { Progress } from './components/pages/Progress';
 import { Transactions } from './components/pages/Transactions';
 import { OnboardingFlow } from './components/pages/UserOnboarding';
@@ -59,10 +57,10 @@ function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={OnboardingFlow} />
         <Route path="/implicit/callback" component={LoginCallback} />
-        <Route path="/get-started" component={LandingPage} />
+        <Route exact path="/" component={LandingPage} />
         {/* any of the routes you need secured should be registered as SecureRoutes */}
         <SecureRoute
-          path="/"
+          path="/dashboard"
           exact
           component={() => <HomePage LoadingComponent={LoadingComponent} />}
         />
@@ -71,13 +69,6 @@ function App() {
           exact
           component={() => <CategorizedSpending />}
         />
-
-        <SecureRoute
-          path="/budget"
-          exact
-          component={() => <PredictiveBudget />}
-        />
-        <SecureRoute path="/profile" exact component={() => <Profile />} />
         <SecureRoute path="/progress" exact component={() => <Progress />} />
         <SecureRoute
           path="/transactions"
