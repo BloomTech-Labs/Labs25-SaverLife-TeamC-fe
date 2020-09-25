@@ -10,6 +10,8 @@
 
 - This app will give working people the methods and motivation to take control of their financial future.
 
+Here's a quick video presentation to get you started: https://youtu.be/VTn3yK6lOGk
+
 ## Resources 👇
 
 ## Deployed App
